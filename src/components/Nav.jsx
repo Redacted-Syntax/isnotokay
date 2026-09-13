@@ -1,4 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
+import Toggle from "./Toggle.jsx";
 
 // Nav items. Order here is order on screen.
 // "Safety" points at /welcome and stays in the nav permanently.
@@ -20,20 +21,24 @@ export default function Nav() {
           <span className="badge">Beta</span>
         </Link>
 
-        <nav aria-label="Main">
-          <ul className="nav__links">
-            {LINKS.map((link) => (
-              <li key={link.to}>
-                <NavLink
-                  to={link.to}
-                  className={({ isActive }) => (isActive ? "is-active" : "")}
-                >
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="nav__right">
+          <nav aria-label="Main">
+            <ul className="nav__links">
+              {LINKS.map((link) => (
+                <li key={link.to}>
+                  <NavLink
+                    to={link.to}
+                    className={({ isActive }) => (isActive ? "is-active" : "")}
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <Toggle />
+        </div>
       </div>
     </header>
   );

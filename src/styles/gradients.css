@@ -1,9 +1,8 @@
 /* ---------- GRADIENT HELPERS ---------- */
-/* The 2024 look leaned on gradients for anything that mattered. These are */
-/* the reusable pieces. */
+/* Gradients pick up whichever theme is active, so these work in both. */
 
-/* Gradient text. The trick: paint the background, then clip it to the */
-/* letter shapes and make the text itself transparent. */
+/* Gradient text. The trick: paint the background, then clip it to the
+ * letter shapes and make the text itself transparent. */
 .grad-text {
   background: var(--grad-hot);
   -webkit-background-clip: text;
@@ -36,23 +35,9 @@
   vertical-align: middle;
 }
 
-/* ---------- GRADIENT BUTTON ---------- */
-/* Use for the one main action on a page. Everything else stays outlined, */
-/* or the gradient stops meaning anything. */
-
-.btn--grad {
-  background: var(--grad-hot);
-  border-color: transparent;
-  color: #fff;
-}
-
-.btn--grad:hover {
-  filter: brightness(1.1);
-}
-
 /* ---------- DOT LIST ---------- */
-/* Bullet lists where each dot is a different color from the gradient */
-/* range, cycling every four items. Straight from the 2024 page. */
+/* Bullet lists where the dots alternate through the theme's colors.
+ * Straight from the 2024 page. */
 
 .dots {
   list-style: none;
@@ -82,19 +67,16 @@
   background: var(--accent);
 }
 
-.dots li:nth-child(4n + 2)::before {
-  background: var(--purple);
+.dots li:nth-child(3n + 2)::before {
+  background: var(--accent-2);
 }
-.dots li:nth-child(4n + 3)::before {
-  background: var(--blue);
-}
-.dots li:nth-child(4n + 4)::before {
-  background: var(--cyan);
+.dots li:nth-child(3n + 3)::before {
+  background: var(--neutral);
 }
 
 /* ---------- GLOW CARD ---------- */
-/* Card with a gradient hairline along the top edge. For the one card on a */
-/* page that should pull the eye. */
+/* Card with a gradient hairline along the top edge. For the one card on a
+ * page that should pull the eye. */
 
 .card--glow {
   position: relative;
