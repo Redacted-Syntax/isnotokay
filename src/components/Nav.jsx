@@ -1,10 +1,12 @@
 import { NavLink, Link } from "react-router-dom";
 
+// Nav items. Order here is order on screen.
+// "Safety" points at /welcome and stays in the nav permanently.
 const LINKS = [
   { to: "/about", label: "About" },
-  { to: "/welcome", label: "Welcome" },
   { to: "/rooms", label: "Rooms" },
   { to: "/guidelines", label: "Guidelines" },
+  { to: "/welcome", label: "Safety" },
   { to: "/store", label: "Shop" },
 ];
 

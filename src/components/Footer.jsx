@@ -14,13 +14,28 @@ export default function Footer() {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/welcome">Start here</Link>
-              </li>
-              <li>
                 <Link to="/rooms">Rooms</Link>
               </li>
               <li>
                 <Link to="/store">Shop</Link>
+              </li>
+              <li>
+                <Link to="/join">Join the list</Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Safety</h4>
+            <ul>
+              <li>
+                <Link to="/welcome">Safety &amp; resources</Link>
+              </li>
+              <li>
+                <Link to="/guidelines">Community guidelines</Link>
+              </li>
+              <li>
+                <Link to="/onboarding">What you agree to</Link>
               </li>
             </ul>
           </div>
@@ -28,9 +43,6 @@ export default function Footer() {
           <div>
             <h4>The rules</h4>
             <ul>
-              <li>
-                <Link to="/guidelines">Community guidelines</Link>
-              </li>
               <li>
                 <Link to="/terms">Terms</Link>
               </li>
@@ -53,8 +65,8 @@ export default function Footer() {
                 <a href="sms:741741">Text HOME to 741741</a>
               </li>
               <li>
-                <a href="https://988lifeline.org" target="_blank" rel="noreferrer">
-                  988lifeline.org
+                <a href="https://findahelpline.com" target="_blank" rel="noreferrer">
+                  Find a helpline
                 </a>
               </li>
             </ul>

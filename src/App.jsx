@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Welcome from "./pages/Welcome.jsx";
+import Onboarding from "./pages/Onboarding.jsx";
 import Rooms from "./pages/Rooms.jsx";
 import Guidelines from "./pages/Guidelines.jsx";
 import Store from "./pages/Store.jsx";
@@ -36,7 +37,14 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+
+          {/* PUBLIC safety page. Never gate this. */}
           <Route path="/welcome" element={<Welcome />} />
+
+          {/* POST-SIGNUP consent gate. In Phase 3 this gets wrapped in */}
+          {/* <ProtectedRoute> and blocks the feed until consent is saved. */}
+          <Route path="/onboarding" element={<Onboarding />} />
+
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/guidelines" element={<Guidelines />} />
           <Route path="/store" element={<Store />} />
