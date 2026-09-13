@@ -17,6 +17,7 @@
 
 import { handleWaitlist } from "./waitlist.js";
 import { handleContact } from "./contact.js";
+import { handleTransmission } from "./transmission.js";
 
 // ---------- ROUTES ----------
 // path -> { method, handler }
@@ -25,6 +26,7 @@ import { handleContact } from "./contact.js";
 const ROUTES = {
   "/api/waitlist": { method: "POST", handler: handleWaitlist },
   "/api/contact": { method: "POST", handler: handleContact },
+  "/api/transmission": { method: "GET", handler: handleTransmission },
 };
 
 export default {
@@ -33,14 +35,18 @@ export default {
     const route = ROUTES[url.pathname];
 
     if (!route) {
-      return Response.json({ error: "Not found." }, { status: 404 });
+      // Unknown /api/ path. In character, but still a real 404.
+      return Response.json(
+        {
+          error: "Not found.",
+          note: "no such endpoint. /api/transmission is the one you want.",
+        },
+        { status: 404 }
+      );
     }
 
     if (request.method !== route.method) {
-      return Response.json(
-        { error: `${route.method} only.` },
-        { status: 405 }
-      );
+      return Response.json({ error: `${route.method} only.` }, { status: 405 });
     }
 
     return route.handler(request, env);
