@@ -14,13 +14,16 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Body font is the readable one. Mono is reserved for labels, status
+ * strips, and the fake terminal blocks - never for paragraphs. */
 body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  font-weight: 500;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
 }
@@ -43,25 +46,25 @@ select {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: var(--font-display);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-weight: var(--heading-weight);
+  line-height: 1.12;
+  letter-spacing: var(--heading-tracking);
   text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-size: clamp(2.1rem, 5.5vw, 3.6rem);
 }
 
 h2 {
-  font-size: clamp(1.65rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.5rem, 3.2vw, 2.2rem);
 }
 
 h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.15rem;
 }
 
 p {
@@ -74,13 +77,23 @@ a {
   text-underline-offset: 3px;
 }
 
-/* The uppercase mono eyebrow label. Used everywhere. */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.1em 0.35em;
+  background: var(--accent-soft);
+  border-radius: 4px;
+}
+
+/* The uppercase eyebrow label. Mono, because it is a signpost not a
+ * sentence. */
 .label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: var(--tracking-label);
+  letter-spacing: var(--label-tracking);
   color: var(--accent);
 }
 
@@ -88,8 +101,12 @@ a {
   font-family: var(--font-mono);
 }
 
+/* The opening paragraph on a page or section. Body font, slightly larger,
+ * softer color. Used to be mono, which was a readability mistake. */
 .lede {
-  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-family: var(--font-body);
+  font-size: clamp(1.02rem, 1.7vw, 1.18rem);
+  font-weight: 500;
   line-height: 1.7;
   color: var(--text-soft);
   max-width: var(--max-read);
@@ -115,18 +132,13 @@ a {
 }
 
 .section {
-  padding-block: clamp(3rem, 8vw, 6rem);
+  padding-block: clamp(3rem, 8vw, 5.5rem);
 }
 
 .stack > * + * {
   margin-top: 1rem;
 }
 
-.stack-lg > * + * {
-  margin-top: 2rem;
-}
-
-/* Card grid. Grid, not flexbox. */
 .grid {
   display: grid;
   gap: 1.25rem;
@@ -140,6 +152,7 @@ a {
   border: var(--border);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
+  text-align: left;
   transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
@@ -157,30 +170,18 @@ a {
   font-size: 0.95rem;
 }
 
-.card__tag {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.2rem 0.6rem;
-  border: var(--border);
-  border-radius: var(--radius-pill);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-soft);
-}
-
 /* ---------- BUTTON ---------- */
 
 .btn {
   display: inline-block;
-  padding: 0.85rem 1.6rem;
+  padding: 0.8rem 1.6rem;
   border: 2px solid transparent;
   border-radius: var(--radius-pill);
   background: var(--grad-hot);
   color: #fff;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 700;
+  font-size: 0.95rem;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -228,7 +229,7 @@ a {
 
 @supports (backdrop-filter: blur(12px)) {
   .nav {
-    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter: blur(12px);
   }
 }
@@ -252,7 +253,7 @@ a {
 
 .nav__wordmark {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 800;
   letter-spacing: -0.01em;
 }
@@ -267,14 +268,15 @@ a {
 .nav__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem;
+  gap: 1.05rem;
   list-style: none;
   padding: 0;
 }
 
 .nav__links a {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
+  font-weight: 500;
   color: var(--text-soft);
   text-decoration: none;
   transition: color 0.2s var(--ease);
@@ -287,18 +289,20 @@ a {
 
 /* ---------- CRISIS BANNER ---------- */
 /* Always rendered. Never behind a login. Never dismissible. */
+/* Body font on purpose: this has to be the most readable text on the site. */
 
 .crisis {
   background: var(--accent-soft);
   border-bottom: 1px solid var(--accent);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  line-height: 1.5;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.55;
   text-align: center;
 }
 
 .crisis__inner {
-  padding-block: 0.6rem;
+  padding-block: 0.65rem;
 }
 
 .crisis a {
@@ -311,8 +315,8 @@ a {
 .footer {
   border-top: var(--border);
   padding-block: 2.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
   color: var(--text-soft);
 }
 
@@ -324,7 +328,7 @@ a {
 
 .footer h4 {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -351,20 +355,22 @@ a {
 }
 
 .footer__base {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: var(--border);
-  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
+  text-align: center;
 }
 
 /* ---------- HERO ---------- */
 
 .hero {
   position: relative;
-  padding-block: clamp(4rem, 12vw, 8rem);
+  padding-block: clamp(3.5rem, 11vw, 7rem);
   overflow: hidden;
 }
 
@@ -391,27 +397,28 @@ a {
 .callout {
   border-left: 2px solid var(--accent);
   padding: 0.25rem 0 0.25rem 1.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
   color: var(--text-soft);
 }
 
-/* ---------- PROSE (legal + guidelines pages) ---------- */
+/* ---------- PROSE ---------- */
 
 .prose {
   max-width: var(--max-read);
 }
 
 .prose h2 {
-  font-size: 1.35rem;
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
   margin-top: 2.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .prose p,
 .prose li {
   color: var(--text-soft);
-  font-size: 0.97rem;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .prose p + p {
@@ -432,7 +439,8 @@ a {
   text-align: center;
 }
 
-.center .lede {
+.center .lede,
+.center .label {
   margin-inline: auto;
 }
 
