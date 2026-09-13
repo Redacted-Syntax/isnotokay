@@ -21,6 +21,15 @@
   // The server-side code. Handles the waitlist endpoint.
   "main": "worker/index.js",
 
+  // ---------- DOMAINS ----------
+  // Attached on deploy, so the domain setup lives in the repo instead of
+  // only in a dashboard. Both domains are already in this Cloudflare
+  // account, so DNS and the TLS certificate are handled automatically.
+  "routes": [
+    { "pattern": "isnotokay.org", "custom_domain": true },
+    { "pattern": "www.isnotokay.org", "custom_domain": true }
+  ],
+
   // ---------- NON-SECRET CONFIG ----------
   // Safe to keep in the repo. A base ID is just an address; it is useless
   // without the token. Defining them here means a deploy can never wipe
