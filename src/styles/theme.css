@@ -1,62 +1,115 @@
 /* ---------- ISNOTOKAY DESIGN TOKENS ---------- */
-/* Palette matched to the March 2024 beta: near-black navy, hot magenta, */
-/* and a cyan-to-purple gradient range. Change colors HERE and nowhere */
-/* else. If you find yourself typing a hex code in a component, use a */
-/* var() instead. */
+/*
+ * TWO THEMES. Both taken from your own projects, not invented.
+ *
+ *   DARK  = red on near-black. Glitchy, techy, 3am.
+ *           Reds from your Toggle.jsx (#dc3232, #4a4a5a).
+ *
+ *   LIGHT = warm cream with pink. Soft, paper, daytime.
+ *           Cream #f5efe6 from the Madlib project, pinks #e94b8a
+ *           and #d668b5 from that same Toggle.jsx.
+ *
+ * Every color on the site comes from this file. To recolor anything,
+ * change it HERE. If you catch yourself typing a hex code inside a
+ * component, use a var() instead.
+ *
+ * Switching theme: the toggle sets data-theme="light" or "dark" on the
+ * <html> element and the browser swaps every token below at once.
+ */
 
+/* ---------- SHARED (same in both themes) ---------- */
 :root {
-  /* ---------- SURFACES ---------- */
-  /* Not pure black. There is a blue-purple tint in it, which is what stops */
-  /* the whole thing looking like a terminal. */
-  --bg: #0b0b14;
-  --bg-deep: #07070d;
-  --surface: #15152280;
-  --surface-solid: #151522;
-  --surface-edge: #24243a;
-
-  /* ---------- TEXT ---------- */
-  --text: #f4f4f8;
-  --text-soft: #a8a8bd;
-  --text-muted: #5c5c75;
-
-  /* ---------- ACCENTS ---------- */
-  /* Magenta is the primary. Headlines, buttons, active states. */
-  --accent: #ff2e9a;
-  --accent-soft: rgba(255, 46, 154, 0.18);
-  --accent-glow: rgba(255, 46, 154, 0.1);
-
-  /* The gradient partners. Used for bullets, badges, and blends. */
-  --purple: #a855f7;
-  --violet: #7209b7;
-  --blue: #4361ee;
-  --cyan: #22d3ee;
-
-  /* ---------- GRADIENTS ---------- */
-  /* The signature look. Magenta into purple for anything interactive. */
-  --grad-hot: linear-gradient(135deg, #ff2e9a 0%, #a855f7 100%);
-  --grad-cool: linear-gradient(135deg, #4361ee 0%, #22d3ee 100%);
-  /* Wordmark: cyan on the left, magenta on the right. */
-  --grad-brand: linear-gradient(90deg, #22d3ee 0%, #4361ee 35%, #ff2e9a 100%);
-
-  /* ---------- TYPE ---------- */
   --font-display: "Syne", system-ui, -apple-system, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
 
   --tracking-label: 0.35em;
 
-  /* ---------- SHAPE ---------- */
   --radius: 14px;
   --radius-lg: 20px;
   --radius-pill: 999px;
-  --border: 1px solid var(--surface-edge);
 
-  /* ---------- SPACE ---------- */
   --gutter: 1.5rem;
   --max-width: 68rem;
   --max-read: 42rem;
 
-  /* ---------- MOTION ---------- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- DARK: RED AND BLACK ---------- */
+
+[data-theme="dark"] {
+  /* Surfaces. Not pure black - there is a faint warmth in it. */
+  --bg: #0a0a0c;
+  --bg-deep: #06060a;
+  --surface: #15151a;
+  --surface-edge: #2a2a33;
+
+  /* Text */
+  --text: #f2f2f4;
+  --text-soft: #9a9aa8;
+  --text-muted: #5a5a68;
+
+  /* Accent: your Toggle's dark-mode red */
+  --accent: #dc3232;
+  --accent-soft: rgba(220, 50, 50, 0.16);
+  --accent-glow: rgba(220, 50, 50, 0.1);
+
+  /* Support colors */
+  --accent-2: #ff5555;
+  --neutral: #4a4a5a;
+
+  --grad-hot: linear-gradient(135deg, #dc3232 0%, #8b1a1a 100%);
+  --grad-brand: linear-gradient(90deg, #ff5555 0%, #dc3232 100%);
+
+  --border: 1px solid var(--surface-edge);
+
+  color-scheme: dark;
+}
+
+/* ---------- LIGHT: CREAM AND PINK ---------- */
+
+[data-theme="light"] {
+  /* Cream from the Madlib project */
+  --bg: #f5efe6;
+  --bg-deep: #ebe3d6;
+  --surface: #fffdf9;
+  --surface-edge: #e0d5c5;
+
+  /* Text: warm near-black, never pure grey */
+  --text: #2b2430;
+  --text-soft: #6b5f6b;
+  --text-muted: #9c8f9c;
+
+  /* Accent: your Toggle's light-mode pink */
+  --accent: #e94b8a;
+  --accent-soft: rgba(233, 75, 138, 0.14);
+  --accent-glow: rgba(233, 75, 138, 0.12);
+
+  /* Support colors */
+  --accent-2: #d668b5;
+  --neutral: #b9aec2;
+
+  --grad-hot: linear-gradient(135deg, #e94b8a 0%, #d668b5 100%);
+  --grad-brand: linear-gradient(90deg, #d668b5 0%, #e94b8a 100%);
+
+  --border: 1px solid var(--surface-edge);
+
+  color-scheme: light;
+}
+
+/* The warm paper texture from the Madlib page. Light mode only. */
+[data-theme="light"] body {
+  background-image: radial-gradient(
+      ellipse at 20% 50%,
+      rgba(200, 180, 160, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(214, 104, 181, 0.08) 0%,
+      transparent 50%
+    );
+  background-attachment: fixed;
 }
 
 /* ---------- ANIMATIONS ---------- */
@@ -101,7 +154,6 @@
   }
 }
 
-/* Staggered entrances. Same timings as the idkreally page. */
 .anim-up-1 {
   animation: slide-up 0.8s var(--ease) 0.1s both;
 }

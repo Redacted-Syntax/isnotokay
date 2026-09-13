@@ -1,0 +1,110 @@
+/* ---------- GLITCH ---------- */
+/*
+ * Dark mode only. The techy broken-signal effect.
+ *
+ * How it works: two copies of the same text sit on top of the real one,
+ * one tinted red and one cyan, each nudged a pixel or two on a loop. That
+ * is the whole trick behind every glitch effect you have ever seen.
+ *
+ * Needs data-text="same words as the element" on the HTML, because the
+ * copies are drawn with CSS content.
+ *
+ *   <h1 className="glitch" data-text="Not okay">Not okay</h1>
+ *
+ * Deliberately subtle. Heavy glitch on a mental health site reads as
+ * decoration, and it makes text harder to read for exactly the people
+ * least able to deal with that right now.
+ */
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+[data-theme="dark"] .glitch::before,
+[data-theme="dark"] .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .glitch::before {
+  color: #ff5555;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  animation: glitch-top 4s infinite steps(2, end);
+}
+
+[data-theme="dark"] .glitch::after {
+  color: #2de3e3;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  animation: glitch-bottom 4s infinite steps(2, end);
+}
+
+/* Still for most of the loop, then a quick stutter. A constant twitch is
+ * exhausting to sit next to. */
+@keyframes glitch-top {
+  0%,
+  92%,
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  93% {
+    transform: translate(-2px, -1px);
+    opacity: 0.75;
+  }
+  95% {
+    transform: translate(2px, 1px);
+    opacity: 0.75;
+  }
+  97% {
+    transform: translate(-1px, 0);
+    opacity: 0.5;
+  }
+}
+
+@keyframes glitch-bottom {
+  0%,
+  92%,
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  93% {
+    transform: translate(2px, 1px);
+    opacity: 0.75;
+  }
+  95% {
+    transform: translate(-2px, -1px);
+    opacity: 0.75;
+  }
+  97% {
+    transform: translate(1px, 0);
+    opacity: 0.5;
+  }
+}
+
+/* Faint scanlines over the whole page. Dark mode only, and low enough that
+ * you feel it rather than see it. */
+[data-theme="dark"] .shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.015) 0px,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="dark"] .glitch::before,
+  [data-theme="dark"] .glitch::after {
+    display: none;
+  }
+}

@@ -1,0 +1,42 @@
+/* ---------- THEME TOGGLE ---------- */
+
+.toggle {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.toggle__track {
+  display: flex;
+  align-items: center;
+  width: 46px;
+  height: 26px;
+  padding: 3px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  transition: background 0.3s var(--ease);
+}
+
+.toggle__thumb {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  background: var(--grad-hot);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  color: #fff;
+  transition: transform 0.3s var(--ease);
+}
+
+/* Thumb sits left in dark mode, slides right in light mode. */
+[data-theme="light"] .toggle__thumb {
+  transform: translateX(20px);
+}
+
+.toggle:hover .toggle__track {
+  background: var(--accent);
+}
