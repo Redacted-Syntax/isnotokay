@@ -1,0 +1,123 @@
+/* ---------- ISNOTOKAY DESIGN TOKENS ---------- */
+/* Pulled from the idkreally landing page. This is the approved palette. */
+/* Change colors HERE and nowhere else. */
+
+:root {
+  /* ---------- SURFACES ---------- */
+  --bg: #0a0a0f;
+  --surface: #1a1a2e;
+  --surface-edge: #2a2a3a;
+
+  /* ---------- TEXT ---------- */
+  --text: #f1f1f1;
+  --text-soft: #6b6b7b;
+  --text-muted: #3a3a4a;
+
+  /* ---------- ACCENTS ---------- */
+  --accent: #e63946;
+  --accent-soft: rgba(230, 57, 70, 0.2);
+  --accent-glow: rgba(230, 57, 70, 0.08);
+  --secondary: #f72585;
+
+  /* ---------- TYPE ---------- */
+  --font-display: "Syne", system-ui, -apple-system, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  --tracking-label: 0.35em;
+
+  /* ---------- SHAPE ---------- */
+  --radius: 14px;
+  --radius-pill: 999px;
+  --border: 1px solid var(--surface-edge);
+
+  /* ---------- SPACE ---------- */
+  --gutter: 1.5rem;
+  --max-width: 68rem;
+  --max-read: 42rem;
+
+  /* ---------- MOTION ---------- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expand-line {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80px;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Staggered entrances. Same timings as the idkreally page. */
+.anim-up-1 {
+  animation: slide-up 0.8s var(--ease) 0.1s both;
+}
+.anim-up-2 {
+  animation: slide-up 0.8s var(--ease) 0.3s both;
+}
+.anim-up-3 {
+  animation: slide-up 0.8s var(--ease) 0.5s both;
+}
+.anim-up-4 {
+  animation: slide-up 0.8s var(--ease) 0.7s both;
+}
+.anim-up-5 {
+  animation: slide-up 0.8s var(--ease) 0.9s both;
+}
+
+.line-expand {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: expand-line 1s var(--ease) 0.6s both;
+}
+
+.cursor-blink::after {
+  content: "|";
+  color: var(--accent);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+/* Anyone who asked their OS not to animate things gets no animation. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
