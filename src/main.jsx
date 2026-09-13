@@ -9,6 +9,7 @@ import "./styles/base.css";
 import "./styles/center.css";
 import "./styles/gradients.css";
 import "./styles/glitch.css";
+import "./styles/redacted.css";
 import "./styles/toggle.css";
 import "./styles/forms.css";
 import "./styles/welcome.css";

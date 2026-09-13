@@ -1,26 +1,25 @@
 /* ---------- ISNOTOKAY DESIGN TOKENS ---------- */
 /*
- * TWO THEMES. Both taken from your own projects, not invented.
+ * TWO THEMES. Both taken from your own projects, nothing invented.
+ *
+ *   LIGHT = warm cream with pink. Soft, paper, daytime. THE DEFAULT.
+ *           Cream #f5efe6 from the Madlib project, pinks #e94b8a
+ *           and #d668b5 from Toggle.jsx.
  *
  *   DARK  = red on near-black. Glitchy, techy, 3am.
- *           Reds from your Toggle.jsx (#dc3232, #4a4a5a).
- *
- *   LIGHT = warm cream with pink. Soft, paper, daytime.
- *           Cream #f5efe6 from the Madlib project, pinks #e94b8a
- *           and #d668b5 from that same Toggle.jsx.
+ *           Reds from that same Toggle.jsx (#dc3232, #4a4a5a).
  *
  * Every color on the site comes from this file. To recolor anything,
  * change it HERE. If you catch yourself typing a hex code inside a
  * component, use a var() instead.
- *
- * Switching theme: the toggle sets data-theme="light" or "dark" on the
- * <html> element and the browser swaps every token below at once.
  */
 
-/* ---------- SHARED (same in both themes) ---------- */
+/* ---------- SHARED ---------- */
 :root {
   --font-display: "Syne", system-ui, -apple-system, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
+  /* Hero headline only. Barely legible on purpose. */
+  --font-glitch: "Rubik Glitch", "Syne", system-ui, sans-serif;
 
   --tracking-label: 0.35em;
 
@@ -35,38 +34,7 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ---------- DARK: RED AND BLACK ---------- */
-
-[data-theme="dark"] {
-  /* Surfaces. Not pure black - there is a faint warmth in it. */
-  --bg: #0a0a0c;
-  --bg-deep: #06060a;
-  --surface: #15151a;
-  --surface-edge: #2a2a33;
-
-  /* Text */
-  --text: #f2f2f4;
-  --text-soft: #9a9aa8;
-  --text-muted: #5a5a68;
-
-  /* Accent: your Toggle's dark-mode red */
-  --accent: #dc3232;
-  --accent-soft: rgba(220, 50, 50, 0.16);
-  --accent-glow: rgba(220, 50, 50, 0.1);
-
-  /* Support colors */
-  --accent-2: #ff5555;
-  --neutral: #4a4a5a;
-
-  --grad-hot: linear-gradient(135deg, #dc3232 0%, #8b1a1a 100%);
-  --grad-brand: linear-gradient(90deg, #ff5555 0%, #dc3232 100%);
-
-  --border: 1px solid var(--surface-edge);
-
-  color-scheme: dark;
-}
-
-/* ---------- LIGHT: CREAM AND PINK ---------- */
+/* ---------- LIGHT: CREAM AND PINK (default) ---------- */
 
 [data-theme="light"] {
   /* Cream from the Madlib project */
@@ -80,17 +48,20 @@
   --text-soft: #6b5f6b;
   --text-muted: #9c8f9c;
 
-  /* Accent: your Toggle's light-mode pink */
+  /* Accent: Toggle.jsx light-mode pink */
   --accent: #e94b8a;
   --accent-soft: rgba(233, 75, 138, 0.14);
   --accent-glow: rgba(233, 75, 138, 0.12);
 
-  /* Support colors */
   --accent-2: #d668b5;
   --neutral: #b9aec2;
 
   --grad-hot: linear-gradient(135deg, #e94b8a 0%, #d668b5 100%);
   --grad-brand: linear-gradient(90deg, #d668b5 0%, #e94b8a 100%);
+
+  /* Glitch fringing: pink and orchid */
+  --glitch-a: #e94b8a;
+  --glitch-b: #d668b5;
 
   --border: 1px solid var(--surface-edge);
 
@@ -110,6 +81,38 @@
       transparent 50%
     );
   background-attachment: fixed;
+}
+
+/* ---------- DARK: RED AND BLACK ---------- */
+
+[data-theme="dark"] {
+  --bg: #0a0a0c;
+  --bg-deep: #06060a;
+  --surface: #15151a;
+  --surface-edge: #2a2a33;
+
+  --text: #f2f2f4;
+  --text-soft: #9a9aa8;
+  --text-muted: #5a5a68;
+
+  /* Accent: Toggle.jsx dark-mode red */
+  --accent: #dc3232;
+  --accent-soft: rgba(220, 50, 50, 0.16);
+  --accent-glow: rgba(220, 50, 50, 0.1);
+
+  --accent-2: #ff5555;
+  --neutral: #4a4a5a;
+
+  --grad-hot: linear-gradient(135deg, #dc3232 0%, #8b1a1a 100%);
+  --grad-brand: linear-gradient(90deg, #ff5555 0%, #dc3232 100%);
+
+  /* Glitch fringing: red and cyan, the classic broken-signal pair */
+  --glitch-a: #ff5555;
+  --glitch-b: #2de3e3;
+
+  --border: 1px solid var(--surface-edge);
+
+  color-scheme: dark;
 }
 
 /* ---------- ANIMATIONS ---------- */
@@ -150,7 +153,7 @@
     opacity: 0.4;
   }
   50% {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 }
 
