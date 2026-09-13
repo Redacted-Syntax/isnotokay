@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader.jsx";
 import Card from "../components/Card.jsx";
 
@@ -6,75 +7,99 @@ export default function About() {
     <>
       <PageHeader
         label="About"
-        title="A space for the beautifully unhinged"
-        lede="Connect with others who understand that sometimes, not being okay is perfectly normal."
+        title="A cry for help in the form of HTML"
+        lede="Connect with people who understand that sometimes not being okay is just Tuesday."
       />
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap prose">
-          <h2>What this is</h2>
+          <h2>The short version</h2>
           <p>
-            IsNotOkay is a peer support community for people navigating mental
-            health challenges, social isolation, and the general complexity of
-            being a person right now. It is built for the chronically online, the
+            IsNotOkay is a community for people navigating mental health stuff,
+            isolation, and the general experience of being a person on the
+            internet in 2026. It is built for the terminally online, the
             overthinking, the self-deprecating, and the painfully self-aware.
           </p>
           <p>
-            It is not a clinic. There are no professionals on staff. What is here
-            is other people who get it, and a structure designed so that
-            honesty does not get punished.
+            Club meets forum, for people with ironic tattoos and imposter
+            syndrome. No judgment, questionable coping mechanisms, genuine
+            emotional depth.
           </p>
 
           <h2>Who built it</h2>
           <p>
-            One person, with lived experience of the thing this site is about.
-            Not a wellness company, not a startup with a mental health vertical.
+            One person. Founded by Redacted, who has Borderline Personality
+            Disorder and is not especially subtle about it. Not a wellness
+            company, not a startup with a mental health vertical, not a team of
+            marketers who workshopped the word &ldquo;journey.&rdquo;
           </p>
           <p>
-            That means the voice here is specific rather than neutral, and it
-            also means the limits are real. There is no overnight staff. There is
-            no 24/7 anything. Those limits are published rather than hidden,
+            Which means the voice here is specific instead of neutral. It also
+            means the limits are real. There is no night shift. There is no 24/7
+            anything. Those limits are printed on the wall rather than buried,
             because a support space that quietly overpromises is worse than one
             that tells you exactly what it can do.
+          </p>
+
+          <h2>Built in public, badly, on purpose</h2>
+          <p>
+            This is the fourth attempt. The first three got prettier and less
+            honest every time, picked up fake testimonials from people who do
+            not exist, and quoted member counts that were invented. All of that
+            is gone and it is not coming back.
+          </p>
+          <p>
+            So instead: it is unfinished, that is visible, and it will say so
+            until it is not. Under construction, just like us.
           </p>
 
           <h2>What it is not</h2>
           <ul>
             <li>Not therapy, treatment, or a diagnosis.</li>
-            <li>Not a crisis line. If it is urgent, call or text 988.</li>
-            <li>Not monitored around the clock.</li>
-            <li>Not a place where your posts get sold to anyone.</li>
+            <li>Not a crisis line. If it is urgent, 988.</li>
+            <li>Not watched around the clock. Nobody is on call.</li>
+            <li>Not a place where your posts become someone&apos;s data set.</li>
+            <li>Not a cult. Legally.</li>
           </ul>
+
+          <p>
+            The full boundaries and the crisis resources live on the{" "}
+            <Link to="/welcome">safety page</Link>, and the house rules are in
+            the <Link to="/guidelines">guidelines</Link>.
+          </p>
         </div>
       </section>
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <span className="label" style={{ marginBottom: "1.5rem" }}>
-            What we&apos;re for
+            The point of it
           </span>
 
           <div className="grid">
-            <Card title="Community">
+            <Card title="People who get it">
               <p>
-                People who understand the specific texture of being unwell and
-                witty about it at the same time.
+                The specific relief of not having to explain from scratch. Others
+                who know the texture of being unwell and funny about it at the
+                same time.
               </p>
             </Card>
-            <Card title="Safe spaces">
+            <Card title="Rooms with rules">
               <p>
-                Rooms with actual rules, so that being honest does not mean
-                getting piled on or fixed at.
+                Moderated, so that vulnerability is protected instead of
+                harvested. Nobody gets to treat your bad week as content.
               </p>
             </Card>
-            <Card title="Self-expression">
+            <Card title="Somewhere to put it">
               <p>
-                Writing, art, playlists, whatever you make instead of sleeping.
+                Writing, art, playlists, whatever you make at 3am. Self-expression
+                without a follower count attached.
               </p>
             </Card>
             <Card title="Merch with meaning">
               <p>
-                The shop funds the space. Support itself stays free, always.
+                Wear your truth. The shop pays for the room, which is how the
+                room stays free.
               </p>
             </Card>
           </div>

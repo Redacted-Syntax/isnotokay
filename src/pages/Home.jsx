@@ -33,15 +33,15 @@ export default function Home() {
           </h1>
 
           <p className="lede anim-up-3" style={{ marginTop: "1.5rem" }}>
-            A space for people who are not okay and need a space to find their
-            okay. Painfully self-aware, terminally online, and just trying to
-            navigate this mess called life.
+            You found us. Or maybe we found you. Either way, welcome to the
+            mess. A space for people who are not okay and need somewhere to find
+            their okay.
           </p>
 
           <div className="row anim-up-4" style={{ marginTop: "2.5rem" }}>
-            <Button to="/welcome">Start here</Button>
-            <Button to="/about" variant="ghost">
-              What this is
+            <Button to="/about">What even is this</Button>
+            <Button to="/welcome" variant="ghost">
+              Safety first
             </Button>
           </div>
 
@@ -55,42 +55,50 @@ export default function Home() {
               color: "var(--text-muted)",
             }}
           >
-            Being built in public &middot; Not open yet
+            Under construction &middot; Just like us
           </p>
         </div>
       </section>
 
-      {/* ---------- WHAT MAKES US DIFFERENT ---------- */}
+      {/* ---------- WHAT EVEN IS THIS ---------- */}
       <section className="section">
         <div className="wrap">
           <span className="label" style={{ marginBottom: "1rem" }}>
-            What makes us different
+            What even is this
           </span>
-          <h2 style={{ marginBottom: "2.5rem" }}>
+          <h2 style={{ marginBottom: "1.5rem" }}>
             You can be smart, funny, online, and still not be okay.
           </h2>
 
+          <p className="lede" style={{ marginBottom: "2.5rem" }}>
+            A project. A club. A cry for help in the form of HTML. Pick your
+            poison. Think internet dive bar rather than wellness app: the lights
+            are low, nobody is going to ask if you have tried yoga, and the
+            merch is genuinely good.
+          </p>
+
           <div className="grid">
-            <Card title="Authenticity first">
+            <Card title="No highlight reel">
               <p>
-                No filters, no highlight reels, no toxic positivity. Just real
-                people sharing real experiences in a space where vulnerability
-                is valued.
+                Nobody here needs you to perform recovery to be allowed in.
+                &ldquo;Today was bad and I have no insight about it&rdquo; is a
+                complete sentence and a complete post.
               </p>
             </Card>
 
-            <Card title="Mental health focus">
+            <Card title="Dark humor, actual rules">
               <p>
-                We acknowledge the reality of mental health challenges and
-                create spaces where discussing them isn&apos;t taboo. It&apos;s
-                encouraged.
+                Gallows humor about your own life is the house language.
+                Encouraging someone else toward the edge is the thing that gets
+                you gone. There is a difference and this place will hold it.
               </p>
             </Card>
 
-            <Card title="Guardrails, not vibes">
+            <Card title="Not a clinic, not pretending">
               <p>
-                Dark humor is welcome. Encouraging anyone to hurt themselves is
-                not. There is a difference and this place will hold it.
+                No professionals on staff, no algorithm deciding what you need,
+                no chatbot doing a therapist impression. Just people who get it,
+                and honesty about what that can and cannot do.
               </p>
             </Card>
           </div>
@@ -105,9 +113,8 @@ export default function Home() {
           </span>
           <h2 style={{ marginBottom: "1rem" }}>Four rooms, one house</h2>
           <p className="lede" style={{ marginBottom: "2.5rem" }}>
-            Entry points, not clinical products pretending to know you better
-            than you do. None of them are open yet and this page will say so
-            until they are.
+            Doors, not diagnoses. None of them are open yet, and this page will
+            keep saying so until they are.
           </p>
 
           <div className="grid">
@@ -137,17 +144,17 @@ export default function Home() {
 
           <blockquote className="callout" style={{ maxWidth: "var(--max-read)" }}>
             <p style={{ fontSize: "1.05rem", color: "var(--text)" }}>
-              &ldquo;I built this because I was tired of pretending to be okay
-              when I wasn&apos;t, and tired of the places that wanted me to
-              perform recovery to be allowed in.&rdquo;
+              &ldquo;I got tired of pretending to be okay, and more tired of the
+              places that wanted me to perform being fine before they would let
+              me in.&rdquo;
             </p>
             <p style={{ marginTop: "1rem", fontSize: "0.85rem" }}>
-              Founder, IsNotOkay
+              Redacted, founder
             </p>
           </blockquote>
 
           <p className="lede" style={{ marginTop: "2rem" }}>
-            Self-awareness is not the same thing as self-rescue. You are allowed
+            Being self-aware is not the same as being rescued. You are allowed
             to be a work in progress in public.
           </p>
         </div>
@@ -159,11 +166,12 @@ export default function Home() {
           <span className="label" style={{ marginBottom: "1rem" }}>
             The list
           </span>
-          <h2 style={{ marginBottom: "1rem" }}>Want to know when it opens?</h2>
+          <h2 style={{ marginBottom: "1rem" }}>Get on the list</h2>
           <p className="lede" style={{ marginBottom: "2rem" }}>
-            No launch date, no countdown timer, no fake urgency. Leave an email
-            and you will hear from an actual person when there is an actual
-            room to walk into.
+            No launch date, no countdown, no fake urgency. Leave an email and
+            you will hear from an actual person once there is an actual room to
+            walk into. When it finally opens you will want to say you were here
+            before it got weird. It is already weird.
           </p>
 
           <WaitlistForm source="isnotokay.org" />
@@ -176,37 +184,44 @@ export default function Home() {
           <span className="label" style={{ marginBottom: "1rem" }}>
             Questions
           </span>
-          <h2>Frequently asked</h2>
+          <h2>Things people ask</h2>
 
-          <h2>What exactly is IsNotOkay?</h2>
+          <h2>So what is it, actually?</h2>
           <p>
-            A community platform built around mental health, authentic
-            self-expression, and genuine connection. It is a space for people who
-            feel isolated, misunderstood, or are navigating mental health
-            challenges.
+            A message board for people who are not okay. Rooms for different
+            flavors of not okay, a shop that pays the bills, and a rule set
+            designed so that being honest does not get you piled on or fixed
+            at.
           </p>
 
-          <h2>Is this a mental health service?</h2>
+          <h2>Is this therapy?</h2>
           <p>
-            No. We are not a substitute for professional mental health services.
-            We are a community that acknowledges and normalizes mental health
-            challenges, but we always encourage members to seek professional help
-            when needed. We aim to provide connection and a sense of belonging
-            alongside professional support, not instead of it.
+            No, and it is not a crisis line either. It is peer support, which
+            is the thing where other people who have been there say so out loud.
+            Good for feeling less alone. Bad for emergencies. Use both.
           </p>
 
-          <h2>Is my information private?</h2>
+          <h2>Who is behind it?</h2>
           <p>
-            We take privacy seriously. You will be able to participate with as
-            much or as little personal information as you are comfortable
-            sharing. We do not and will not sell user data.{" "}
-            <Link to="/health-data">Read how health data is handled.</Link>
+            One person with the diagnoses to prove it, building this in public
+            and learning the backend as she goes. Not a wellness startup, not a
+            company with a mental health vertical.{" "}
+            <Link to="/about">More on that here.</Link>
+          </p>
+
+          <h2>What happens to what I post?</h2>
+          <p>
+            It stays here. Nothing gets sold, nothing gets handed to advertisers,
+            no pixel is watching which room you opened.{" "}
+            <Link to="/health-data">The specifics are here</Link> and they are
+            written in English.
           </p>
 
           <h2>When does it open?</h2>
           <p>
-            No date yet, and you will not get a fake one. The moderation tools
-            have to exist before anyone is invited to be vulnerable here.
+            No date, and you will not be given a fake one. The tools that keep
+            people safe have to exist before anyone gets invited to be
+            vulnerable here. That is the whole holdup and it is the right one.
           </p>
         </div>
       </section>

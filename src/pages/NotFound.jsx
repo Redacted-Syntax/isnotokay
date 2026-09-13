@@ -7,7 +7,7 @@ export default function NotFound() {
       <PageHeader
         label="Error 404"
         title="This page is also not okay"
-        lede="It is not here. Could be a typo, could be something that has not been built yet. Either way, not your fault."
+        lede="It is not here. Could be a typo, could be something that has not been built yet. Either way, not your fault. Relatable, honestly."
         center
       />
 
@@ -15,7 +15,7 @@ export default function NotFound() {
         <div className="wrap row">
           <Button to="/">Go home</Button>
           <Button to="/welcome" variant="ghost">
-            Start here instead
+            Safety page
           </Button>
         </div>
       </section>

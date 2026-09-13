@@ -15,7 +15,7 @@ export default function Join() {
       <PageHeader
         label="Join"
         title="Not open yet"
-        lede="There is no signup because there is nothing to sign up to. Leave an email and you will hear when there is."
+        lede="There is nothing to sign up to, so there is no signup. Leave an email and you will hear when that changes."
       />
 
       <section className="section" style={{ paddingTop: 0 }}>
@@ -23,25 +23,28 @@ export default function Join() {
           <WaitlistForm source="isnotokay.org" />
 
           <div className="prose" style={{ marginTop: "3.5rem" }}>
-            <h2>Why so slow</h2>
+            <h2>Why it is taking so long</h2>
             <p>
-              Inviting people into an empty room is how communities die, and
-              the moderation tools have to exist before anyone is asked to be
-              vulnerable here. Safety first, members second.
+              Because walking people into an empty room is how these places
+              die, and because the report button and the moderation queue have
+              to work before anyone is asked to be honest here. Safety first,
+              members second. It is slower and it is correct.
             </p>
 
-            <h2>What happens when it opens</h2>
+            <h2>What it looks like when it opens</h2>
             <ul>
-              <li>A small first group, invited by hand, not a public launch.</li>
-              <li>Accounts with a chosen handle, not your real name.</li>
-              <li>Rooms, posts, comments, and a working report button.</li>
+              <li>A small first group, invited by hand. No public launch.</li>
+              <li>A handle you pick, not your real name.</li>
+              <li>Rooms, posts, comments, and a report button that works.</li>
             </ul>
 
             <h2>Before you decide</h2>
             <p>
               Read the <Link to="/welcome">safety page</Link>. It says plainly
-              what this place can and cannot do, including the fact that nobody
-              is watching overnight.
+              what this place can and cannot do, including the part where nobody
+              is watching overnight. And{" "}
+              <Link to="/onboarding">this is what you will agree to</Link> when
+              you join, available now so it is not a surprise later.
             </p>
           </div>
         </div>

@@ -23,14 +23,15 @@ export default function Store() {
     <>
       <PageHeader
         label="The Cult Shop"
-        title="Merch that pays for the room"
-        lede="Apparel and small things for the beautifully unhinged, painfully self-aware, and terminally online. The shop funds the community so that the community never has to charge for support."
+        title="Darkly stylish drops you will pretend you did not impulse buy"
+        lede="Apparel and small things for the beautifully unhinged and terminally online. Your emotional damage, monetized (eventually). The shop pays for the room so the room never has to charge for support."
       />
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <p className="callout" style={{ marginBottom: "2.5rem" }}>
-            Nothing is for sale yet. These are the planned first pieces.
+            Nothing is for sale yet. These are the first pieces, still at the
+            &ldquo;exists in my head&rdquo; stage.
           </p>
 
           <div className="grid">
@@ -44,9 +45,14 @@ export default function Store() {
           <div className="prose" style={{ marginTop: "3rem" }}>
             <h2>Where the money goes</h2>
             <p>
-              Hosting, the domain, and the boring costs of keeping a site alive.
-              Peer support itself is free and will stay free. Nobody should have
-              to pay to be heard.
+              Hosting, the domain, and the deeply unglamorous costs of keeping a
+              website alive. That is it. There is no investor and there is no
+              growth target.
+            </p>
+            <p>
+              Support itself stays free, permanently. Nobody should have to pay
+              to be heard, and any place that charges you for that is selling
+              something else.
             </p>
           </div>
 
