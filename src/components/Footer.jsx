@@ -20,7 +20,7 @@ export default function Footer() {
                 <Link to="/store">Shop</Link>
               </li>
               <li>
-                <Link to="/join">Join the list</Link>
+                <Link to="/join">Get on the list</Link>
               </li>
             </ul>
           </div>
@@ -32,7 +32,7 @@ export default function Footer() {
                 <Link to="/welcome">Safety &amp; resources</Link>
               </li>
               <li>
-                <Link to="/guidelines">Community guidelines</Link>
+                <Link to="/guidelines">House rules</Link>
               </li>
               <li>
                 <Link to="/onboarding">What you agree to</Link>
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>The rules</h4>
+            <h4>The boring bits</h4>
             <ul>
               <li>
                 <Link to="/terms">Terms</Link>
@@ -75,7 +75,7 @@ export default function Footer() {
 
         <p className="footer__base">
           &copy; {year} IsNotOkay &middot; Peer support, not treatment &middot;
-          Built by one person who is also a work in progress
+          Built by one person who is also under construction
         </p>
       </div>
     </footer>

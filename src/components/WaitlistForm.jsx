@@ -4,7 +4,7 @@ import { useState } from "react";
 // Controlled inputs: every field's value comes from state, and state is the
 // single source of truth. Same pattern as the React forms unit.
 //
-// Posts to /api/waitlist, which is functions/api/waitlist.js. No keys here.
+// Posts to /api/waitlist, which is worker/waitlist.js. No keys here.
 // Nothing in this file is secret, which is exactly the point.
 
 export default function WaitlistForm({ source = "isnotokay.org" }) {
@@ -50,8 +50,8 @@ export default function WaitlistForm({ source = "isnotokay.org" }) {
   if (status === "done") {
     return (
       <p className="callout" role="status">
-        You&apos;re on the list. You&apos;ll hear from a person, not a
-        newsletter robot, and not that often.
+        You are on the list. You will hear from a person, not a newsletter
+        robot, and not often. Probably only when something actually happens.
       </p>
     );
   }
@@ -92,7 +92,7 @@ export default function WaitlistForm({ source = "isnotokay.org" }) {
           required
         />
         <span>
-          Email me when there is something real to tell. Nothing else, no
+          Email me when there is something real to say. Nothing else, no
           sharing, unsubscribe whenever.
         </span>
       </label>
@@ -103,7 +103,7 @@ export default function WaitlistForm({ source = "isnotokay.org" }) {
         disabled={status === "sending"}
         style={{ marginTop: "0.5rem" }}
       >
-        {status === "sending" ? "Adding you..." : "Keep me posted"}
+        {status === "sending" ? "Adding you..." : "Get on the list"}
       </button>
 
       {status === "error" && (
@@ -113,8 +113,8 @@ export default function WaitlistForm({ source = "isnotokay.org" }) {
       )}
 
       <p className="form__fine">
-        Your email is stored so we can tell you when the doors open. It is not
-        sold, shared, or connected to any ad tool. Ever.
+        Your email sits in a spreadsheet so we can tell you when the doors
+        open. It is not sold, shared, or wired up to any ad tool. Ever.
       </p>
     </form>
   );
