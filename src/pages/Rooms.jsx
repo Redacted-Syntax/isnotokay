@@ -2,6 +2,7 @@ import PageHeader from "../components/PageHeader.jsx";
 import Card from "../components/Card.jsx";
 import SystemNote from "../components/SystemNote.jsx";
 import Redacted from "../components/Redacted.jsx";
+import SignOff from "../components/SignOff.jsx";
 import { ROOMS } from "../data/rooms.js";
 
 export default function Rooms() {
@@ -15,15 +16,21 @@ export default function Rooms() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <SystemNote code="ERR_ROOM_NOT_FOUND" status="4 of 4 missing" variant="error">
+          <SystemNote
+            code="ERR_ROOM_NOT_FOUND"
+            status="4 of 4 missing"
+            variant="error"
+          >
             <p>
-              None of these rooms exist. The names are real, the ideas are real,
-              the database they would live in is <Redacted>vapor</Redacted>.
+              None of these rooms exist. The names are real, the ideas are
+              real, the database they would live in is{" "}
+              <Redacted glitch>entirely theoretical</Redacted>.
             </p>
             <p>
-              A badge that says &ldquo;coming soon&rdquo; for two years straight
+              A badge reading &ldquo;coming soon&rdquo; for two years straight
               is just a lie with better manners, so it says this instead
             </p>
+            <SignOff />
           </SystemNote>
 
           <div className="grid">
@@ -37,16 +44,19 @@ export default function Rooms() {
           <div className="prose prose--center" style={{ marginTop: "3rem" }}>
             <h2>You do not have to pick one</h2>
             <p>
-              Nobody gets sorted. Nobody gets assigned a lane based on what they
-              posted once at 4am. These are doors, and you can use all of them
-              or none of them.
+              Nobody gets sorted. Nobody gets assigned a lane based on what
+              they posted once at 4am. These are doors, and you can use all of
+              them or none of them.
             </p>
 
             <h2>What happens when one opens</h2>
             <p>
-              This page changes and the little status tag stops being a joke.
-              Best guess on timing: <Redacted reveal hint="honestly">after the
-              backend class in December</Redacted>.
+              This page changes and the little status tags stop being a joke.
+              Best guess on timing:{" "}
+              <Redacted reveal hint="honestly">
+                after the backend class in December
+              </Redacted>
+              .
             </p>
           </div>
         </div>

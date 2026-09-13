@@ -3,13 +3,11 @@ import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 import SystemNote from "../components/SystemNote.jsx";
 import Redacted from "../components/Redacted.jsx";
+import SignOff from "../components/SignOff.jsx";
 
 // ---------- SHOP ----------
 // Do NOT build a cart here. When the shop is real, this page links out to
 // Big Cartel or Payhip and they handle payment, tax, and fulfilment.
-//
-// Product names are from the original Cult Shop. Prices are targets, kept
-// because the print-on-demand margins work at these numbers.
 
 const ITEMS = [
   { name: "Emotionally Unavailable Hoodie", price: "$65", status: "unprinted" },
@@ -40,6 +38,7 @@ export default function Store() {
             <p>
               Estimated ship date: <Redacted>lol</Redacted>
             </p>
+            <SignOff note="inventory managed badly" />
           </SystemNote>
 
           <div className="grid">
@@ -53,9 +52,9 @@ export default function Store() {
           <div className="prose prose--center" style={{ marginTop: "3rem" }}>
             <h2>Where the money goes</h2>
             <p>
-              Hosting, the domain, and the deeply unglamorous costs of keeping a
-              website alive. That is the whole budget. There is no investor and
-              no growth target.
+              Hosting, the domain, and the deeply unglamorous costs of keeping
+              a website alive. That is the whole budget. There is no investor
+              and no growth target.
             </p>
             <p>
               Support itself stays free, permanently. Nobody should have to pay

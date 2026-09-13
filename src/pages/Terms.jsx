@@ -1,8 +1,9 @@
 import PageHeader from "../components/PageHeader.jsx";
 import SystemNote from "../components/SystemNote.jsx";
 import Redacted from "../components/Redacted.jsx";
+import SignOff from "../components/SignOff.jsx";
 
-// NOT REAL TERMS YET. The in-world framing below is fun, but it must stay
+// NOT REAL TERMS YET. The in-world framing is fun, but it must stay
 // unmistakable that nothing here is binding. Generate real policies
 // (Termageddon ~$119/yr auto-updates as laws change) and have a human
 // review the crisis and health-data language before anyone signs up.
@@ -22,18 +23,21 @@ export default function Terms() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <SystemNote code="DOC_UNSIGNED" status="not binding" variant="classified">
+          <SystemNote
+            code="DOC_UNSIGNED"
+            status="not binding"
+            variant="classified"
+          >
             <p>
-              There are no terms yet, because there is nothing to agree to yet.
-              No accounts, no checkout, no data beyond an email you typed in on
-              purpose.
+              There are no terms yet, because there is nothing to agree to
+              yet. No accounts, no checkout, no data beyond an email you typed
+              in on purpose.
             </p>
             <p>
-              Real ones arrive before the doors do. Currently blocked on:{" "}
-              <Redacted reveal hint="the unglamorous truth">
-                money for a lawyer
-              </Redacted>
+              Real ones arrive before the doors do. Currently blocked on{" "}
+              <Redacted glitch>money for a lawyer</Redacted>
             </p>
+            <SignOff note="legally meaningless" />
           </SystemNote>
 
           <div className="prose">
@@ -56,7 +60,9 @@ export default function Terms() {
                 Be a person. Harassment, doxxing, and selling things to people
                 in pain end your account.
               </li>
-              <li>Governed by Nevada law, because that is where the founder is.</li>
+              <li>
+                Governed by Nevada law, because that is where the founder is.
+              </li>
             </ul>
 
             <p>

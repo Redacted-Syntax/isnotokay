@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+const KOFI_URL = "https://ko-fi.com/redactedbae";
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -13,9 +15,14 @@ export default function Footer() {
             This place runs on about eleven dollars a year and one
             person&apos;s free time.
           </p>
-          <Link className="btn btn--ghost footer__support-btn" to="/support">
-            Support the site
-          </Link>
+          <a
+            className="btn btn--ghost footer__support-btn"
+            href={KOFI_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Buy me a coffee
+          </a>
         </div>
 
         <div className="footer__cols">
@@ -59,6 +66,11 @@ export default function Footer() {
                 <Link to="/contact">Contact</Link>
               </li>
               <li>
+                <a href={KOFI_URL} target="_blank" rel="noreferrer">
+                  Ko-fi
+                </a>
+              </li>
+              <li>
                 <Link to="/support">Support the site</Link>
               </li>
               <li>
@@ -83,7 +95,11 @@ export default function Footer() {
                 <a href="sms:741741">Text HOME to 741741</a>
               </li>
               <li>
-                <a href="https://findahelpline.com" target="_blank" rel="noreferrer">
+                <a
+                  href="https://findahelpline.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Find a helpline
                 </a>
               </li>
@@ -100,6 +116,9 @@ export default function Footer() {
           </span>
           <span>
             ships <b>anyway</b>
+          </span>
+          <span>
+            maintained by <b>[REDACTED]</b>
           </span>
         </p>
 
