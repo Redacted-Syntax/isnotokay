@@ -1,39 +1,70 @@
 import PageHeader from "../components/PageHeader.jsx";
+import SystemNote from "../components/SystemNote.jsx";
+import Redacted from "../components/Redacted.jsx";
 
-// PLACEHOLDER. Do not launch on this text.
-// Generate real policies (Termageddon ~$119/yr auto-updates as laws change,
-// or Termly) and have a human review the crisis + health data language.
+// NOT REAL TERMS YET. The in-world framing below is fun, but it must stay
+// unmistakable that nothing here is binding. Generate real policies
+// (Termageddon ~$119/yr auto-updates as laws change) and have a human
+// review the crisis and health-data language before anyone signs up.
+//
+// Must eventually cover: 18+ and minor removal, not a medical or crisis
+// service, members own their posts, acceptable use, discretionary and
+// non-continuous moderation, liability limits, Nevada governing law.
 
 export default function Terms() {
   return (
     <>
-      <PageHeader label="Legal" title="Terms of service" />
+      <PageHeader
+        label="The boring bits"
+        title="Terms of service"
+        lede="The part where a website tells you what it is allowed to do to you."
+      />
 
       <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap prose">
-          <p className="callout">
-            Placeholder. Real terms go here before the site accepts a single
-            signup.
-          </p>
+        <div className="wrap">
+          <SystemNote code="DOC_UNSIGNED" status="not binding" variant="classified">
+            <p>
+              There are no terms yet, because there is nothing to agree to yet.
+              No accounts, no checkout, no data beyond an email you typed in on
+              purpose.
+            </p>
+            <p>
+              Real ones arrive before the doors do. Currently blocked on:{" "}
+              <Redacted reveal hint="the unglamorous truth">
+                money for a lawyer
+              </Redacted>
+            </p>
+          </SystemNote>
 
-          <h2>Must cover</h2>
-          <ul>
-            <li>18+ only, and how an account gets removed if a minor is found.</li>
-            <li>
-              Not a medical or crisis service. No professional relationship is
-              created by using this site.
-            </li>
-            <li>
-              Members own their posts and grant a limited license to display
-              them here.
-            </li>
-            <li>Acceptable use, and what gets an account suspended.</li>
-            <li>
-              Moderation is discretionary and not continuous. No promised
-              response times.
-            </li>
-            <li>Liability limits, dispute terms, governing law (Nevada).</li>
-          </ul>
+          <div className="prose">
+            <h2>What they will say, in plain terms</h2>
+            <ul className="dots">
+              <li>Adults only. 18+, and minors get removed when found.</li>
+              <li>
+                This is not a medical service, not therapy, and not a crisis
+                line. Using it does not make anyone your clinician.
+              </li>
+              <li>
+                Your words stay yours. The site gets permission to display them
+                here and nothing more.
+              </li>
+              <li>
+                Moderation happens when a human is awake. No promised response
+                times, ever.
+              </li>
+              <li>
+                Be a person. Harassment, doxxing, and selling things to people
+                in pain end your account.
+              </li>
+              <li>Governed by Nevada law, because that is where the founder is.</li>
+            </ul>
+
+            <p>
+              That list is the intent. The enforceable version will be longer
+              and worse to read, which is unfortunately the point of a
+              contract.
+            </p>
+          </div>
         </div>
       </section>
     </>
