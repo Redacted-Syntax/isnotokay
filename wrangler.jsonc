@@ -1,9 +1,9 @@
 {
   // ---------- CLOUDFLARE WORKER CONFIG ----------
   //
-  // This file is what `npx wrangler deploy` reads. Without it the build
-  // succeeds and the deploy fails, which is exactly what happened on the
-  // first attempt.
+  // This file is what `npx wrangler deploy` reads, and it is the source of
+  // truth. Anything set only in the dashboard can get overwritten on a
+  // future deploy, so non-secret config belongs HERE.
   //
   // The setup is "Workers with static assets": Vite builds the React app
   // into dist/, Cloudflare serves those files, and the small Worker in
@@ -21,6 +21,19 @@
   // The server-side code. Handles the waitlist endpoint.
   "main": "worker/index.js",
 
+  // ---------- NON-SECRET CONFIG ----------
+  // Safe to keep in the repo. A base ID is just an address; it is useless
+  // without the token. Defining them here means a deploy can never wipe
+  // them out from under you.
+  //
+  // The SECRET lives only in the dashboard and never in this file:
+  //   Worker -> Settings -> Variables and Secrets
+  //     AIRTABLE_TOKEN   type: Secret
+  "vars": {
+    "AIRTABLE_BASE": "appgdJPjWXPGgfF2E",
+    "AIRTABLE_TABLE": "Waitlist"
+  },
+
   "assets": {
     // Where Vite puts the built site. Must match "Build output" in the
     // dashboard.
@@ -29,6 +42,10 @@
     // React Router owns the URLs, so any path that is not a real file gets
     // index.html and React figures out what to render. Without this,
     // loading /about directly would 404.
+    //
+    // Note: do NOT also add a public/_redirects file. That is Cloudflare
+    // Pages syntax and on Workers it fails the deploy with an "infinite
+    // loop detected" error.
     "not_found_handling": "single-page-application",
 
     // Lets the Worker serve assets itself if it ever needs to.

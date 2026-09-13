@@ -1,12 +1,15 @@
 .env
 .env.local
 .env.*.local
+.dev.vars
+.dev.vars.*
 *.pem
 
 node_modules
 dist
 dist-ssr
 .vite
+.wrangler
 
 .DS_Store
 *.log
