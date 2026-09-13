@@ -117,8 +117,17 @@ export default function Footer() {
           <span>
             ships <b>anyway</b>
           </span>
+          {/* Quiet breadcrumb into the ARG layer. Reads as a stamp until */}
+          {/* you hover it. */}
           <span>
-            maintained by <b>[REDACTED]</b>
+            maintained by{" "}
+            <Link
+              className="breadcrumb"
+              to="/archive"
+              title="there were others"
+            >
+              <b>[REDACTED]</b>
+            </Link>
           </span>
         </p>
 

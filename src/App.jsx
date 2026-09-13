@@ -15,6 +15,7 @@ import Store from "./pages/Store.jsx";
 import Join from "./pages/Join.jsx";
 import Contact from "./pages/Contact.jsx";
 import Support from "./pages/Support.jsx";
+import Archive from "./pages/Archive.jsx";
 import Terms from "./pages/Terms.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import HealthData from "./pages/HealthData.jsx";
@@ -53,6 +54,11 @@ export default function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/support" element={<Support />} />
+
+          {/* Not in the nav. Found via robots.txt, the console, or the */}
+          {/* footer stamp. See docs/ARG.md. */}
+          <Route path="/archive" element={<Archive />} />
+
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/health-data" element={<HealthData />} />
