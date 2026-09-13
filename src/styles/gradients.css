@@ -1,0 +1,110 @@
+/* ---------- GRADIENT HELPERS ---------- */
+/* The 2024 look leaned on gradients for anything that mattered. These are */
+/* the reusable pieces. */
+
+/* Gradient text. The trick: paint the background, then clip it to the */
+/* letter shapes and make the text itself transparent. */
+.grad-text {
+  background: var(--grad-hot);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.grad-text--brand {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------- BETA BADGE ---------- */
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  background: var(--grad-hot);
+  border-radius: 5px;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  vertical-align: middle;
+}
+
+/* ---------- GRADIENT BUTTON ---------- */
+/* Use for the one main action on a page. Everything else stays outlined, */
+/* or the gradient stops meaning anything. */
+
+.btn--grad {
+  background: var(--grad-hot);
+  border-color: transparent;
+  color: #fff;
+}
+
+.btn--grad:hover {
+  filter: brightness(1.1);
+}
+
+/* ---------- DOT LIST ---------- */
+/* Bullet lists where each dot is a different color from the gradient */
+/* range, cycling every four items. Straight from the 2024 page. */
+
+.dots {
+  list-style: none;
+  padding: 0;
+}
+
+.dots li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.dots li + li {
+  margin-top: 0.75rem;
+}
+
+.dots li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.dots li:nth-child(4n + 2)::before {
+  background: var(--purple);
+}
+.dots li:nth-child(4n + 3)::before {
+  background: var(--blue);
+}
+.dots li:nth-child(4n + 4)::before {
+  background: var(--cyan);
+}
+
+/* ---------- GLOW CARD ---------- */
+/* Card with a gradient hairline along the top edge. For the one card on a */
+/* page that should pull the eye. */
+
+.card--glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.card--glow::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--grad-hot);
+}

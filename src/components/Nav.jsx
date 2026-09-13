@@ -5,9 +5,10 @@ import { NavLink, Link } from "react-router-dom";
 const LINKS = [
   { to: "/about", label: "About" },
   { to: "/rooms", label: "Rooms" },
-  { to: "/guidelines", label: "Guidelines" },
+  { to: "/guidelines", label: "House rules" },
   { to: "/welcome", label: "Safety" },
-  { to: "/store", label: "Shop" },
+  { to: "/store", label: "Store" },
+  { to: "/join", label: "Join" },
 ];
 
 export default function Nav() {
@@ -15,7 +16,8 @@ export default function Nav() {
     <header className="nav">
       <div className="wrap nav__inner">
         <Link to="/" className="nav__brand">
-          isnotokay<span style={{ color: "var(--accent)" }}>.org</span>
+          <span className="grad-text--brand nav__wordmark">IsNotOkay.org</span>
+          <span className="badge">Beta</span>
         </Link>
 
         <nav aria-label="Main">

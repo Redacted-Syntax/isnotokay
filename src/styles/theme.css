@@ -1,23 +1,42 @@
 /* ---------- ISNOTOKAY DESIGN TOKENS ---------- */
-/* Pulled from the idkreally landing page. This is the approved palette. */
-/* Change colors HERE and nowhere else. */
+/* Palette matched to the March 2024 beta: near-black navy, hot magenta, */
+/* and a cyan-to-purple gradient range. Change colors HERE and nowhere */
+/* else. If you find yourself typing a hex code in a component, use a */
+/* var() instead. */
 
 :root {
   /* ---------- SURFACES ---------- */
-  --bg: #0a0a0f;
-  --surface: #1a1a2e;
-  --surface-edge: #2a2a3a;
+  /* Not pure black. There is a blue-purple tint in it, which is what stops */
+  /* the whole thing looking like a terminal. */
+  --bg: #0b0b14;
+  --bg-deep: #07070d;
+  --surface: #15152280;
+  --surface-solid: #151522;
+  --surface-edge: #24243a;
 
   /* ---------- TEXT ---------- */
-  --text: #f1f1f1;
-  --text-soft: #6b6b7b;
-  --text-muted: #3a3a4a;
+  --text: #f4f4f8;
+  --text-soft: #a8a8bd;
+  --text-muted: #5c5c75;
 
   /* ---------- ACCENTS ---------- */
-  --accent: #e63946;
-  --accent-soft: rgba(230, 57, 70, 0.2);
-  --accent-glow: rgba(230, 57, 70, 0.08);
-  --secondary: #f72585;
+  /* Magenta is the primary. Headlines, buttons, active states. */
+  --accent: #ff2e9a;
+  --accent-soft: rgba(255, 46, 154, 0.18);
+  --accent-glow: rgba(255, 46, 154, 0.1);
+
+  /* The gradient partners. Used for bullets, badges, and blends. */
+  --purple: #a855f7;
+  --violet: #7209b7;
+  --blue: #4361ee;
+  --cyan: #22d3ee;
+
+  /* ---------- GRADIENTS ---------- */
+  /* The signature look. Magenta into purple for anything interactive. */
+  --grad-hot: linear-gradient(135deg, #ff2e9a 0%, #a855f7 100%);
+  --grad-cool: linear-gradient(135deg, #4361ee 0%, #22d3ee 100%);
+  /* Wordmark: cyan on the left, magenta on the right. */
+  --grad-brand: linear-gradient(90deg, #22d3ee 0%, #4361ee 35%, #ff2e9a 100%);
 
   /* ---------- TYPE ---------- */
   --font-display: "Syne", system-ui, -apple-system, sans-serif;
@@ -27,6 +46,7 @@
 
   /* ---------- SHAPE ---------- */
   --radius: 14px;
+  --radius-lg: 20px;
   --radius-pill: 999px;
   --border: 1px solid var(--surface-edge);
 
@@ -100,7 +120,7 @@
 
 .line-expand {
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background: var(--grad-hot);
   animation: expand-line 1s var(--ease) 0.6s both;
 }
 
