@@ -13,6 +13,8 @@ import Rooms from "./pages/Rooms.jsx";
 import Guidelines from "./pages/Guidelines.jsx";
 import Store from "./pages/Store.jsx";
 import Join from "./pages/Join.jsx";
+import Contact from "./pages/Contact.jsx";
+import Support from "./pages/Support.jsx";
 import Terms from "./pages/Terms.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import HealthData from "./pages/HealthData.jsx";
@@ -24,7 +26,7 @@ export default function App() {
       <ScrollToTop />
 
       {/* Crisis info sits ABOVE the nav and outside the router on purpose. */}
-      {/* It renders on every page, logged in or not. Do not make it dismissible. */}
+      {/* It renders on every page, logged in or not. Not dismissible. */}
       <CrisisBanner />
 
       <a className="skip-link" href="#main">
@@ -49,6 +51,8 @@ export default function App() {
           <Route path="/guidelines" element={<Guidelines />} />
           <Route path="/store" element={<Store />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/support" element={<Support />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/health-data" element={<HealthData />} />

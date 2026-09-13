@@ -6,6 +6,18 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="wrap">
+        {/* Support call-out sits above the columns so it is the last real */}
+        {/* thing on the page. */}
+        <div className="footer__support">
+          <p>
+            This place runs on about eleven dollars a year and one
+            person&apos;s free time.
+          </p>
+          <Link className="btn btn--ghost footer__support-btn" to="/support">
+            Support the site
+          </Link>
+        </div>
+
         <div className="footer__cols">
           <div>
             <h4>The site</h4>
@@ -17,7 +29,7 @@ export default function Footer() {
                 <Link to="/rooms">Rooms</Link>
               </li>
               <li>
-                <Link to="/store">Shop</Link>
+                <Link to="/store">Store</Link>
               </li>
               <li>
                 <Link to="/join">Get on the list</Link>
@@ -41,8 +53,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>The boring bits</h4>
+            <h4>Reach out</h4>
             <ul>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+              <li>
+                <Link to="/support">Support the site</Link>
+              </li>
               <li>
                 <Link to="/terms">Terms</Link>
               </li>

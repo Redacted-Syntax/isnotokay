@@ -1,6 +1,8 @@
 // Every page opens the same way: mono label, expanding hairline, big title,
 // mono lede. Staggered entrance. Keeps the site feeling like one thing.
-export default function PageHeader({ label, title, lede, center = false }) {
+//
+// Centered by default. Pass center={false} for a left-aligned header.
+export default function PageHeader({ label, title, lede, center = true }) {
   return (
     <header className={`section ${center ? "center" : ""}`}>
       <div className="wrap">

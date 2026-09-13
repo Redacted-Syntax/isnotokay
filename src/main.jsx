@@ -6,6 +6,7 @@ import { ThemeProvider } from "./context/ThemeContext.jsx";
 
 import "./styles/theme.css";
 import "./styles/base.css";
+import "./styles/center.css";
 import "./styles/gradients.css";
 import "./styles/glitch.css";
 import "./styles/toggle.css";
