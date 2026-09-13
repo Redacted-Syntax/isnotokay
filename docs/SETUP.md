@@ -18,55 +18,92 @@ console errors.
 If the terminal says it cannot find `package.json`, you are in the wrong
 folder. `pwd` should end in `/isnotokay`.
 
-## 2. Deploy to Cloudflare Pages
+## 2. How it deploys
 
-1. Cloudflare dashboard -> Workers & Pages -> Create -> Pages -> Connect to Git
-2. Pick the `isnotokay` repo
-3. Build settings:
-   - Framework preset: **Vite**
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-4. Save and Deploy
+This is a **Worker with static assets**, not a Pages project. Cloudflare
+now steers new projects to Workers and it is the better path, but the two
+work differently and the docs for one will confuse you if you are on the
+other.
 
-Every push to `main` redeploys automatically. Pull requests get their own
-preview URL.
+What happens on every push to `main`:
 
-## 3. Attach the domain
+1. `npm run build` - Vite compiles the React app into `dist/`
+2. `npx wrangler deploy` - reads `wrangler.jsonc` and ships it
 
-Pages project -> Custom domains -> Set up a domain -> `isnotokay.org`
+`wrangler.jsonc` is the file that makes the deploy work. Without it the
+build passes and the deploy fails with nothing useful in the log.
 
-The domain is already at Cloudflare, so DNS is filled in automatically and TLS
-is issued for free. Add `www.isnotokay.org` too and let it redirect to the
-apex.
+Three settings in it matter:
 
-## 4. sadsquad.party
+| Setting | What it does |
+| --- | --- |
+| `assets.directory` | `./dist/` - must match "Build output" in the dashboard |
+| `not_found_handling` | `single-page-application` so React Router owns the URLs |
+| `run_worker_first` | `["/api/*"]` so the API is not swallowed by the SPA rule |
+
+That last one is subtle. Without it, `/api/waitlist` would return
+`index.html` with a 200 status and the form would fail in a genuinely
+baffling way.
+
+## 3. Dashboard settings
+
+Your Worker -> Settings:
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
+
+Those are already correct if the project was created through Connect to Git.
+
+## 4. Secrets
+
+Worker -> Settings -> **Variables and Secrets** -> Add:
+
+| Name | Value | Type |
+| --- | --- | --- |
+| `AIRTABLE_TOKEN` | your `pat...` token | **Secret** |
+| `AIRTABLE_BASE` | `appgdJPjWXPGgfF2E` | Text |
+| `AIRTABLE_TABLE` | `Waitlist` | Text |
+
+Then **retry the build**. Secrets only reach deploys that happen after you
+save them.
+
+## 5. Attach the domain
+
+Worker -> Settings -> Domains & Routes -> Add -> Custom domain ->
+`isnotokay.org`
+
+DNS and the TLS certificate are automatic because the domain is already at
+Cloudflare. Add `www.isnotokay.org` too.
+
+## 6. sadsquad.party
 
 Do not build a second site on it. Two options:
 
-- **Redirect** - Cloudflare -> Rules -> Redirect Rules -> forward everything to
-  `https://isnotokay.org`. A sayable URL for TikTok, zero extra work.
-- **One event page** - a single page with a date on it for a specific
-  session. An event is the best cold-start mechanic there is, because people
-  show up for a time slot when they will not sign up for a forum.
+- **Redirect** - Cloudflare -> Rules -> Redirect Rules -> forward everything
+  to `https://isnotokay.org`. A sayable URL for TikTok, zero extra work.
+- **Point it at the existing Typeform** - there is already a live signup form
+  at form.typeform.com/to/AjM7cmIy with the right voice on it.
 
 Never send email from it. Novelty gTLDs have no sender reputation and mail
 from them lands in spam. All email goes from isnotokay.org.
 
-## 5. Routing note
+## Reading logs
 
-`public/_redirects` sends every path to `index.html` so React Router can
-handle it. Without it, loading `/about` directly returns a 404 on a static
-host. It is already in the repo.
+Worker -> Logs. `observability` is enabled in `wrangler.jsonc`, so
+`console.error` from `worker/` shows up there. That is where the real
+Airtable error appears when the form misbehaves, because the visitor only
+ever sees a friendly message.
 
-## Phase 2 and beyond
+## Phase 3 and beyond
 
-Nothing here needs a `.env` file yet. When Supabase arrives in Dec/Jan:
+When Supabase arrives in Dec/Jan, the frontend config is:
 
 ```
 VITE_SUPABASE_URL=...
 VITE_SUPABASE_ANON_KEY=...
 ```
 
-Those go in `.env.local`, which is already gitignored. Note that anything
-prefixed `VITE_` is bundled into the browser and is therefore public. The anon
-key is designed for that. A service role key never, ever goes in frontend code.
+in `.env.local`, which is already gitignored. Anything prefixed `VITE_` ends
+up in the browser bundle and is therefore public. The anon key is designed
+for that. A service role key belongs in `worker/`, never in `src/`.
