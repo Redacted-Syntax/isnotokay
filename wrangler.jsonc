@@ -1,0 +1,49 @@
+{
+  // ---------- CLOUDFLARE WORKER CONFIG ----------
+  //
+  // This file is what `npx wrangler deploy` reads. Without it the build
+  // succeeds and the deploy fails, which is exactly what happened on the
+  // first attempt.
+  //
+  // The setup is "Workers with static assets": Vite builds the React app
+  // into dist/, Cloudflare serves those files, and the small Worker in
+  // worker/index.js handles /api/* requests.
+
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  "name": "isnotokay",
+
+  // Pins the Workers runtime behaviour to this date so a future platform
+  // change cannot silently break the site. Leave it alone unless you have a
+  // reason to move it.
+  "compatibility_date": "2026-09-13",
+
+  // The server-side code. Handles the waitlist endpoint.
+  "main": "worker/index.js",
+
+  "assets": {
+    // Where Vite puts the built site. Must match "Build output" in the
+    // dashboard.
+    "directory": "./dist/",
+
+    // React Router owns the URLs, so any path that is not a real file gets
+    // index.html and React figures out what to render. Without this,
+    // loading /about directly would 404.
+    "not_found_handling": "single-page-application",
+
+    // Lets the Worker serve assets itself if it ever needs to.
+    "binding": "ASSETS",
+
+    // IMPORTANT: /api/* goes to the Worker BEFORE the static-asset rules
+    // get a say. Without this line, "single-page-application" would hand
+    // back index.html for /api/waitlist and the form would break in a
+    // genuinely confusing way (a 200 response full of HTML).
+    "run_worker_first": ["/api/*"]
+  },
+
+  // Lets you see console.log output and errors in the dashboard under
+  // the Worker's Logs tab. Worth keeping on.
+  "observability": {
+    "enabled": true
+  }
+}
