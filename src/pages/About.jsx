@@ -12,7 +12,7 @@ export default function About() {
       />
 
       <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap prose">
+        <div className="wrap prose prose--center">
           <h2>The short version</h2>
           <p>
             IsNotOkay is a community for people navigating mental health stuff,
@@ -35,10 +35,10 @@ export default function About() {
           </p>
           <p>
             Which means the voice here is specific instead of neutral. It also
-            means the limits are real. There is no night shift. There is no 24/7
-            anything. Those limits are printed on the wall rather than buried,
-            because a support space that quietly overpromises is worse than one
-            that tells you exactly what it can do.
+            means the limits are real. There is no night shift. There is no
+            24/7 anything. Those limits are printed on the wall rather than
+            buried, because a support space that quietly overpromises is worse
+            than one that tells you exactly what it can do.
           </p>
 
           <h2>Built in public, badly, on purpose</h2>
@@ -54,7 +54,7 @@ export default function About() {
           </p>
 
           <h2>What it is not</h2>
-          <ul>
+          <ul className="dots" style={{ textAlign: "left" }}>
             <li>Not therapy, treatment, or a diagnosis.</li>
             <li>Not a crisis line. If it is urgent, 988.</li>
             <li>Not watched around the clock. Nobody is on call.</li>
@@ -65,23 +65,24 @@ export default function About() {
           <p>
             The full boundaries and the crisis resources live on the{" "}
             <Link to="/welcome">safety page</Link>, and the house rules are in
-            the <Link to="/guidelines">guidelines</Link>.
+            the <Link to="/guidelines">guidelines</Link>. Anything else,{" "}
+            <Link to="/contact">ask</Link>.
           </p>
         </div>
       </section>
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <span className="label" style={{ marginBottom: "1.5rem" }}>
-            The point of it
-          </span>
+          <div className="section-head">
+            <span className="label">The point of it</span>
+          </div>
 
           <div className="grid">
             <Card title="People who get it">
               <p>
-                The specific relief of not having to explain from scratch. Others
-                who know the texture of being unwell and funny about it at the
-                same time.
+                The specific relief of not having to explain from scratch.
+                Others who know the texture of being unwell and funny about it
+                at the same time.
               </p>
             </Card>
             <Card title="Rooms with rules">
@@ -92,8 +93,8 @@ export default function About() {
             </Card>
             <Card title="Somewhere to put it">
               <p>
-                Writing, art, playlists, whatever you make at 3am. Self-expression
-                without a follower count attached.
+                Writing, art, playlists, whatever you make at 3am.
+                Self-expression without a follower count attached.
               </p>
             </Card>
             <Card title="Merch with meaning">

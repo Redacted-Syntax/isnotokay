@@ -21,7 +21,7 @@ export default function Rooms() {
             ))}
           </div>
 
-          <div className="prose" style={{ marginTop: "3rem" }}>
+          <div className="prose prose--center" style={{ marginTop: "3rem" }}>
             <h2>Why they all say &ldquo;concept&rdquo;</h2>
             <p>
               Because none of them exist yet, and a badge that says &ldquo;coming
