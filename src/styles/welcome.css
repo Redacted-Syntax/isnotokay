@@ -1,0 +1,287 @@
+/* ---------- MONO DISPLAY HEADING ---------- */
+/* Big headings in Space Mono. Ported from the Polsia build, where the */
+/* monospace headline against sans body copy read calm and deliberate */
+/* rather than shouty. Used on /welcome and the resource library. */
+
+.mono-display {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+/* ---------- WELCOME LAYOUT ---------- */
+/* One column on phones, sidebar + steps on wide screens. */
+
+.welcome__layout {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 56rem) {
+  .welcome__layout {
+    grid-template-columns: 20rem 1fr;
+  }
+
+  /* Panel follows you down the page while you read the steps. */
+  .clearline {
+    position: sticky;
+    top: 6rem;
+  }
+}
+
+/* ---------- THE CLEAR LINE PANEL ---------- */
+
+.clearline {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.clearline__title {
+  font-size: 1.3rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.clearline p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.clearline p + p {
+  margin-top: 0.85rem;
+}
+
+.clearline__urgent {
+  color: var(--text) !important;
+  font-weight: 700;
+}
+
+.clearline__notes {
+  margin-top: 1.5rem;
+  padding: 0 0 0 1rem;
+  border-left: 2px solid var(--accent);
+  list-style: none;
+}
+
+.clearline__notes li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.clearline__notes li + li {
+  margin-top: 0.75rem;
+}
+
+/* ---------- NUMBERED STEPS ---------- */
+
+.welcome__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.step {
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+}
+
+.step__num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.step__title {
+  font-size: 1.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.step__body {
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+
+.step__rules {
+  margin: 1.25rem 0;
+  padding: 0 0 0 1rem;
+  list-style: none;
+}
+
+.step__rules li {
+  border-left: 2px solid var(--accent-soft);
+  padding-left: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.step__rules li + li {
+  margin-top: 0.85rem;
+}
+
+.step__more {
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ---------- CONSENT ROW ---------- */
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: 1.25rem;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.consent input {
+  margin-top: 0.15rem;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ---------- RADIO CHOICE GROUPS ---------- */
+
+.choice {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  border: none;
+}
+
+.choice legend {
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+
+.choice__opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.choice__opt + .choice__opt {
+  margin-top: 0.5rem;
+}
+
+.choice__opt input {
+  margin-top: 0.15rem;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.choice:disabled .choice__opt,
+.consent input:disabled + span {
+  opacity: 0.6;
+}
+
+/* ---------- RESOURCE CARD ---------- */
+
+.resource {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--accent-soft);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.resource__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.resource__kind {
+  padding: 0.2rem 0.6rem;
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.resource__reviewed {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.resource__name {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.resource__blurb {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.resource__caveat {
+  margin: 1rem 0;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--accent-soft);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Pushes the button to the bottom so cards in a row line up. */
+.resource__action {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.85rem;
+}
+
+.resource__source {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.resource__source a {
+  color: var(--text-soft);
+}
