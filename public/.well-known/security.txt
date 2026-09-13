@@ -1,0 +1,29 @@
+# ---------- security.txt ----------
+# https://securitytxt.org/ - the standard place to report a vulnerability.
+#
+# This one is real. If you found a way into something, please tell me
+# before you tell anyone else. This site is going to hold people's worst
+# nights and I would rather owe you a favour than explain a breach.
+
+Contact: https://isnotokay.org/contact
+Preferred-Languages: en
+Canonical: https://isnotokay.org/.well-known/security.txt
+
+# ---------- scope ----------
+# In scope:  isnotokay.org, www.isnotokay.org, /api/*
+# Out of scope: the hidden pages. Those are decoration, not a target,
+#               and finding them is not a vulnerability - it is the point.
+
+# ---------- what is actually here ----------
+# As of build 0.1.0 there are no accounts, no passwords, no posts, and no
+# database. The attack surface is two endpoints that append rows to a
+# spreadsheet. If you have found something anyway, I am genuinely impressed
+# and would like to hear about it.
+
+# ---------- the boring true part ----------
+# A previous version of this project leaked an API token in public HTML.
+# It has been revoked. Every secret now lives server-side in worker/ and
+# nothing sensitive ships to the browser. If you spot that changing, that
+# is a real bug and I want to know.
+
+#                                                     - [REDACTED]

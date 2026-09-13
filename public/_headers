@@ -1,0 +1,38 @@
+# ---------- RESPONSE HEADERS ----------
+#
+# Two jobs in one file.
+#
+# 1. REAL SECURITY AND PRIVACY. The Referrer-Policy line is the one that
+#    matters most here: without it, every site a member clicks through to
+#    learns they came from a mental health community. That is exactly the
+#    kind of leak the consumer health data laws exist to stop.
+#
+# 2. ARG. Anyone opening the Network tab or running curl gets a little
+#    something. See docs/SECRETS.md for the full map.
+#
+# Cloudflare reads this file on deploy. Syntax is two spaces of indent per
+# header under each path pattern.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  X-Redacted: [REDACTED]
+  X-Powered-By: caffeine, spite, and one backend class starting in December
+  X-Build: 0.1.0
+  X-Tests: zero
+  X-Note: you are reading response headers. that is a choice. respect.
+  X-See-Also: /archive, /humans.txt, /.well-known/security.txt
+
+/archive
+  X-Recovered: 2 of 5
+  X-Unrecoverable: idkreally.com, sadsquad.org, iiclout.com
+  X-Note: the fourth one is still in its redemption window. for now.
+
+/welcome
+  X-Note: this page has no secrets in it on purpose.
+
+/api/*
+  X-Robots-Tag: noindex
+  Cache-Control: no-store

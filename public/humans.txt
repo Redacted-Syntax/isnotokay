@@ -1,0 +1,75 @@
+                    /\
+                   /  \
+                  / [] \
+                 /______\
+
+
+            I S   N O T   O K A Y
+              humans.txt
+
+
+---------------------------------------------------------------
+TEAM
+---------------------------------------------------------------
+
+  Founder, developer, designer, writer,
+  moderator, support, and QA .... [REDACTED]
+
+  That is one person. All of those are the
+  same person. That is not a humblebrag, it
+  is a staffing problem.
+
+
+---------------------------------------------------------------
+SITE
+---------------------------------------------------------------
+
+  Built with .......... React, Vite, plain CSS,
+                        and a Cloudflare Worker
+  Fonts ............... Fraunces, Quicksand, Syne,
+                        Space Grotesk, JetBrains Mono,
+                        Rubik Glitch
+  Hosted at ........... the edge, somewhere
+  Cost per year ....... about eleven dollars
+  Analytics ........... none
+  Trackers ............ none. not a slogan, a policy.
+
+
+---------------------------------------------------------------
+NOTE
+---------------------------------------------------------------
+
+  Hi.
+
+  This file is normally a credits roll. There is
+  nobody to credit, so it is a letter instead.
+
+  This is the fourth version of this website. The
+  first three are at /archive. Three of the domains
+  are gone for good, which happened because of a
+  renewal email I did not open in time, twice.
+
+  Every previous version was prettier than this one
+  and less honest than this one. They had glowing
+  testimonials from people who did not exist and a
+  member count I made up. I am not doing that again.
+  What is here is what is here.
+
+  If you are reading a plain text file on a website
+  at an unreasonable hour, you are probably the
+  person this whole thing was built for.
+
+  There is no puzzle you have to solve. Nothing that
+  matters is hidden. If tonight is rough, /welcome is
+  the page, and 988 is the number.
+
+  Otherwise, poke around. I left things.
+
+                              - [REDACTED]
+
+
+---------------------------------------------------------------
+
+  aGkgdGhlcmUsIG5vc3kuIGdvb2QuIGtlZXAgZ29pbmcuCg==
+
+---------------------------------------------------------------
