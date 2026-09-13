@@ -1,27 +1,25 @@
 /* ---------- ISNOTOKAY DESIGN TOKENS ---------- */
 /*
- * TWO THEMES. Both taken from your own projects, nothing invented.
+ * TWO THEMES, and they do not just swap colors - they swap typography too.
  *
- *   LIGHT = warm cream with pink. Soft, paper, daytime. THE DEFAULT.
- *           Cream #f5efe6 from the Madlib project, pinks #e94b8a
- *           and #d668b5 from Toggle.jsx.
+ *   LIGHT = cream and pink, Fraunces + Quicksand. Whimsy, paper, daytime.
+ *           THE DEFAULT. Cream #f5efe6 and Quicksand both come from the
+ *           Madlib project. Pinks from Toggle.jsx.
  *
- *   DARK  = red on near-black. Glitchy, techy, 3am.
- *           Reds from that same Toggle.jsx (#dc3232, #4a4a5a).
+ *   DARK  = red on near-black, Syne + Space Grotesk + JetBrains Mono.
+ *           Heavy tech, hacker terminal, 3am. Reds from that same
+ *           Toggle.jsx.
  *
- * Every color on the site comes from this file. To recolor anything,
- * change it HERE. If you catch yourself typing a hex code inside a
- * component, use a var() instead.
+ * Every color AND every font on the site comes from this file. To change
+ * either, change it HERE. If you catch yourself typing a hex code or a
+ * font name inside a component, use a var() instead.
  */
 
 /* ---------- SHARED ---------- */
 :root {
-  --font-display: "Syne", system-ui, -apple-system, sans-serif;
-  --font-mono: "Space Mono", ui-monospace, monospace;
-  /* Hero headline only. Barely legible on purpose. */
-  --font-glitch: "Rubik Glitch", "Syne", system-ui, sans-serif;
-
-  --tracking-label: 0.35em;
+  /* Hero headline only, both themes. Barely legible on purpose, which is
+   * fine for six words and wrong for anything else. */
+  --font-glitch: "Rubik Glitch", system-ui, sans-serif;
 
   --radius: 14px;
   --radius-lg: 20px;
@@ -29,28 +27,28 @@
 
   --gutter: 1.5rem;
   --max-width: 68rem;
-  --max-read: 42rem;
+  --max-read: 40rem;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ---------- LIGHT: CREAM AND PINK (default) ---------- */
+/* ---------- LIGHT: CREAM, PINK, WHIMSY (default) ---------- */
 
 [data-theme="light"] {
   /* Cream from the Madlib project */
   --bg: #f5efe6;
   --bg-deep: #ebe3d6;
   --surface: #fffdf9;
-  --surface-edge: #e0d5c5;
+  --surface-edge: #e2d7c8;
 
-  /* Text: warm near-black, never pure grey */
+  /* Warm near-black. Never pure grey. */
   --text: #2b2430;
   --text-soft: #6b5f6b;
   --text-muted: #9c8f9c;
 
-  /* Accent: Toggle.jsx light-mode pink */
+  /* Toggle.jsx light-mode pink */
   --accent: #e94b8a;
-  --accent-soft: rgba(233, 75, 138, 0.14);
+  --accent-soft: rgba(233, 75, 138, 0.13);
   --accent-glow: rgba(233, 75, 138, 0.12);
 
   --accent-2: #d668b5;
@@ -62,6 +60,16 @@
   /* Glitch fringing: pink and orchid */
   --glitch-a: #e94b8a;
   --glitch-b: #d668b5;
+
+  /* TYPE: soft wonky serif headings, rounded friendly body */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Quicksand", system-ui, -apple-system, sans-serif;
+  --font-mono: "Space Grotesk", ui-monospace, monospace;
+
+  --heading-weight: 800;
+  --heading-tracking: -0.01em;
+  --label-tracking: 0.22em;
+  --body-size: 1.02rem;
 
   --border: 1px solid var(--surface-edge);
 
@@ -83,32 +91,42 @@
   background-attachment: fixed;
 }
 
-/* ---------- DARK: RED AND BLACK ---------- */
+/* ---------- DARK: RED, BLACK, HACKER ---------- */
 
 [data-theme="dark"] {
-  --bg: #0a0a0c;
-  --bg-deep: #06060a;
-  --surface: #15151a;
-  --surface-edge: #2a2a33;
+  --bg: #08080a;
+  --bg-deep: #030305;
+  --surface: #121216;
+  --surface-edge: #26262f;
 
-  --text: #f2f2f4;
-  --text-soft: #9a9aa8;
-  --text-muted: #5a5a68;
+  --text: #e8e8ec;
+  --text-soft: #8f8f9e;
+  --text-muted: #55555f;
 
-  /* Accent: Toggle.jsx dark-mode red */
+  /* Toggle.jsx dark-mode red */
   --accent: #dc3232;
-  --accent-soft: rgba(220, 50, 50, 0.16);
+  --accent-soft: rgba(220, 50, 50, 0.15);
   --accent-glow: rgba(220, 50, 50, 0.1);
 
   --accent-2: #ff5555;
   --neutral: #4a4a5a;
 
-  --grad-hot: linear-gradient(135deg, #dc3232 0%, #8b1a1a 100%);
+  --grad-hot: linear-gradient(135deg, #dc3232 0%, #7a1515 100%);
   --grad-brand: linear-gradient(90deg, #ff5555 0%, #dc3232 100%);
 
   /* Glitch fringing: red and cyan, the classic broken-signal pair */
   --glitch-a: #ff5555;
   --glitch-b: #2de3e3;
+
+  /* TYPE: geometric headings, techy grotesque body, real mono for terminal */
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-body: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --heading-weight: 800;
+  --heading-tracking: -0.02em;
+  --label-tracking: 0.3em;
+  --body-size: 1rem;
 
   --border: 1px solid var(--surface-edge);
 
