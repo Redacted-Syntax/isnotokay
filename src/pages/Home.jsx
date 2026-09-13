@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
 import WaitlistForm from "../components/WaitlistForm.jsx";
+import Redacted from "../components/Redacted.jsx";
 import { ROOMS } from "../data/rooms.js";
 
 export default function Home() {
@@ -27,16 +28,20 @@ export default function Home() {
             <div className="line-expand" />
           </div>
 
-          {/* data-text is what the glitch layers draw. Keep it identical to */}
-          {/* the visible words or the effect looks wrong in dark mode. */}
-          <h1 className="anim-up-2 glitch" data-text="For the beautifully unhinged">
+          {/* data-text feeds the glitch layers. Keep it identical to the */}
+          {/* visible words or the effect smears. */}
+          <h1
+            className="anim-up-2 glitch h-glitch"
+            data-text="For the beautifully unhinged"
+          >
             For the beautifully unhinged
           </h1>
 
           <p className="lede anim-up-3" style={{ marginTop: "1.5rem" }}>
             You found us. Or maybe we found you. Either way, welcome to the
-            mess. A space for people who are not okay and need somewhere to
-            find their okay.
+            mess. A digital fever dream stitched together with caffeine,
+            late-night overthinking, internet trauma, and some genuinely solid
+            code.
           </p>
 
           <div className="row anim-up-4" style={{ marginTop: "2.5rem" }}>
@@ -46,17 +51,19 @@ export default function Home() {
             </Button>
           </div>
 
-          <p
-            className="mono anim-up-5"
-            style={{
-              marginTop: "3rem",
-              fontSize: "0.75rem",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "var(--text-muted)",
-            }}
-          >
-            Under construction &middot; Just like us
+          <p className="strip anim-up-5" style={{ marginTop: "3rem" }}>
+            <span>
+              status <b>under construction</b>
+            </span>
+            <span>
+              members <b>[redacted]</b>
+            </span>
+            <span>
+              launch <b>soon-ish</b>
+            </span>
+            <span>
+              uptime <b>optimistic</b>
+            </span>
           </p>
         </div>
       </section>
@@ -68,10 +75,10 @@ export default function Home() {
             <span className="label">What even is this</span>
             <h2>You can be smart, funny, online, and still not be okay.</h2>
             <p className="lede">
-              A project. A club. A cry for help in the form of HTML. Pick your
-              poison. Think internet dive bar rather than wellness app: the
-              lights are low, nobody is going to ask if you have tried yoga,
-              and the merch is genuinely good.
+              A network. A project. A club. A cry for help in the form of HTML.
+              Pick your poison. Think internet dive bar rather than wellness
+              app: the lights are low, nobody is going to ask if you have tried
+              yoga, and the merch is genuinely good.
             </p>
           </div>
 
@@ -87,16 +94,16 @@ export default function Home() {
             <Card title="Dark humor, actual rules">
               <p>
                 Gallows humor about your own life is the house language.
-                Encouraging someone else toward the edge is the thing that gets
-                you gone. There is a difference and this place will hold it.
+                Encouraging someone else toward the edge is what gets you gone.
+                There is a difference and this place will hold it.
               </p>
             </Card>
 
             <Card title="Not a clinic, not pretending">
               <p>
-                No professionals on staff, no algorithm deciding what you need,
-                no chatbot doing a therapist impression. Just people who get
-                it, and honesty about what that can and cannot do.
+                No professionals on staff. No algorithm deciding what you need.
+                No chatbot doing a therapist impression with a{" "}
+                <code>try/catch</code> around your feelings.
               </p>
             </Card>
           </div>
@@ -110,20 +117,23 @@ export default function Home() {
             <span className="label">Ways in</span>
             <h2>Four rooms, one house</h2>
             <p className="lede">
-              Doors, not diagnoses. None of them are open yet, and this page
-              will keep saying so until they are.
+              Doors, not diagnoses. Entry points, not clinical products
+              pretending to know you better than you do.
             </p>
           </div>
 
           <div className="grid">
             {ROOMS.map((room) => (
-              <Card key={room.slug} title={room.name} tag="Concept">
+              <Card key={room.slug} title={room.name} tag={room.status}>
                 <p>{room.blurb}</p>
               </Card>
             ))}
           </div>
 
-          <div className="row center" style={{ marginTop: "2rem", justifyContent: "center" }}>
+          <div
+            className="row"
+            style={{ marginTop: "2rem", justifyContent: "center" }}
+          >
             <Button to="/rooms" variant="quiet">
               More about the rooms
             </Button>
@@ -147,7 +157,8 @@ export default function Home() {
               let me in.&rdquo;
             </p>
             <p style={{ marginTop: "1rem", fontSize: "0.85rem" }}>
-              Redacted, founder
+              Redacted, founder &middot; real name{" "}
+              <Redacted>not your business</Redacted>
             </p>
           </blockquote>
 
@@ -165,10 +176,10 @@ export default function Home() {
             <span className="label">The list</span>
             <h2>Get on the list</h2>
             <p className="lede">
-              No launch date, no countdown, no fake urgency. Leave an email and
-              you will hear from an actual person once there is an actual room
-              to walk into. When it finally opens you will want to say you were
-              here before it got weird. It is already weird.
+              No countdown timer, no fake urgency, no launch date invented to
+              make you feel something. Get updates, existential thoughts, and
+              early access. We promise to only email when we are having a
+              crisis, which is often.
             </p>
           </div>
 
@@ -203,8 +214,7 @@ export default function Home() {
             <h2>Who is behind it?</h2>
             <p>
               One person with the diagnoses to prove it, building this in public
-              and learning the backend as she goes. Not a wellness startup, not
-              a company with a mental health vertical.{" "}
+              and learning the backend as she goes.{" "}
               <Link to="/about">More on that here.</Link>
             </p>
 
@@ -218,10 +228,16 @@ export default function Home() {
 
             <h2>When does it open?</h2>
             <p>
-              No date, and you will not be given a fake one. The tools that keep
-              people safe have to exist before anyone gets invited to be
-              vulnerable here. That is the whole holdup and it is the right one.
+              <Redacted reveal hint="nice try">
+                when the report button works
+              </Redacted>
+              . The tools that keep people safe have to exist before anyone gets
+              invited to be vulnerable here. That is the whole holdup and it is
+              the right one.
             </p>
+
+            <h2>Is this a cult?</h2>
+            <p>Legally, no.</p>
 
             <h2>Can I ask something else?</h2>
             <p>
