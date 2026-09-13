@@ -25,3 +25,9 @@
 .gate .btn {
   flex-shrink: 0;
 }
+
+/* Footer status strip. */
+.footer__strip {
+  margin-top: 2rem;
+  justify-content: center;
+}

@@ -91,9 +91,21 @@ export default function Footer() {
           </div>
         </div>
 
+        <p className="strip footer__strip">
+          <span>
+            build <b>0.1.0</b>
+          </span>
+          <span>
+            tests <b>zero</b>
+          </span>
+          <span>
+            ships <b>anyway</b>
+          </span>
+        </p>
+
         <p className="footer__base">
           &copy; {year} IsNotOkay &middot; Peer support, not treatment &middot;
-          Built by one person who is also under construction
+          All rights reserved (or whatever)
         </p>
       </div>
     </footer>
