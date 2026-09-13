@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
+import WaitlistForm from "../components/WaitlistForm.jsx";
 import { ROOMS } from "../data/rooms.js";
 
 export default function Home() {
@@ -126,8 +127,8 @@ export default function Home() {
       </section>
 
       {/* ---------- FOUNDER ---------- */}
-      {/* Real words from the founder. The only quote on this site is hers, */}
-      {/* because she is the only member so far. */}
+      {/* The only quote on this site is hers, because she is the only member */}
+      {/* so far. No testimonials until there are real people to quote. */}
       <section className="section">
         <div className="wrap">
           <span className="label" style={{ marginBottom: "1.5rem" }}>
@@ -149,6 +150,23 @@ export default function Home() {
             Self-awareness is not the same thing as self-rescue. You are allowed
             to be a work in progress in public.
           </p>
+        </div>
+      </section>
+
+      {/* ---------- WAITLIST ---------- */}
+      <section className="section">
+        <div className="wrap">
+          <span className="label" style={{ marginBottom: "1rem" }}>
+            The list
+          </span>
+          <h2 style={{ marginBottom: "1rem" }}>Want to know when it opens?</h2>
+          <p className="lede" style={{ marginBottom: "2rem" }}>
+            No launch date, no countdown timer, no fake urgency. Leave an email
+            and you will hear from an actual person when there is an actual
+            room to walk into.
+          </p>
+
+          <WaitlistForm source="isnotokay.org" />
         </div>
       </section>
 
@@ -185,10 +203,10 @@ export default function Home() {
             <Link to="/health-data">Read how health data is handled.</Link>
           </p>
 
-          <h2>Can I get involved?</h2>
+          <h2>When does it open?</h2>
           <p>
-            Not yet. The site is still being built and there is no signup. When
-            there is, it will be a small first group, invited by hand.
+            No date yet, and you will not get a fake one. The moderation tools
+            have to exist before anyone is invited to be vulnerable here.
           </p>
         </div>
       </section>
