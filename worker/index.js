@@ -12,27 +12,37 @@
 // SECRETS (set in the dashboard, never in this repo):
 //   Worker -> Settings -> Variables and Secrets
 //     AIRTABLE_TOKEN   your Airtable personal access token (type: Secret)
-//     AIRTABLE_BASE    appgdJPjWXPGgfF2E                   (type: Text)
-//     AIRTABLE_TABLE   Waitlist                            (type: Text)
+//
+// Non-secret config lives in wrangler.jsonc under "vars".
 
 import { handleWaitlist } from "./waitlist.js";
+import { handleContact } from "./contact.js";
+
+// ---------- ROUTES ----------
+// path -> { method, handler }
+// To add an endpoint: write the handler in its own file, import it above,
+// and add a line here.
+const ROUTES = {
+  "/api/waitlist": { method: "POST", handler: handleWaitlist },
+  "/api/contact": { method: "POST", handler: handleContact },
+};
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const route = ROUTES[url.pathname];
 
-    // ---------- ROUTES ----------
-    // Add new endpoints here. Keep each one in its own file under worker/
-    // and import it, the same way waitlist works.
-
-    if (url.pathname === "/api/waitlist") {
-      if (request.method !== "POST") {
-        return Response.json({ error: "POST only." }, { status: 405 });
-      }
-      return handleWaitlist(request, env);
+    if (!route) {
+      return Response.json({ error: "Not found." }, { status: 404 });
     }
 
-    // Unknown /api/ path. A clear 404 beats a confusing one.
-    return Response.json({ error: "Not found." }, { status: 404 });
+    if (request.method !== route.method) {
+      return Response.json(
+        { error: `${route.method} only.` },
+        { status: 405 }
+      );
+    }
+
+    return route.handler(request, env);
   },
 };

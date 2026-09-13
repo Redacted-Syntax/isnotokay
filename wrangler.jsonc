@@ -14,17 +14,13 @@
   "name": "isnotokay",
 
   // Pins the Workers runtime behaviour to this date so a future platform
-  // change cannot silently break the site. Leave it alone unless you have a
-  // reason to move it.
+  // change cannot silently break the site.
   "compatibility_date": "2026-09-13",
 
-  // The server-side code. Handles the waitlist endpoint.
+  // The server-side code.
   "main": "worker/index.js",
 
   // ---------- DOMAINS ----------
-  // Attached on deploy, so the domain setup lives in the repo instead of
-  // only in a dashboard. Both domains are already in this Cloudflare
-  // account, so DNS and the TLS certificate are handled automatically.
   "routes": [
     { "pattern": "isnotokay.org", "custom_domain": true },
     { "pattern": "www.isnotokay.org", "custom_domain": true }
@@ -32,43 +28,33 @@
 
   // ---------- NON-SECRET CONFIG ----------
   // Safe to keep in the repo. A base ID is just an address; it is useless
-  // without the token. Defining them here means a deploy can never wipe
-  // them out from under you.
+  // without the token.
   //
-  // The SECRET lives only in the dashboard and never in this file:
+  // The SECRET lives only in the dashboard:
   //   Worker -> Settings -> Variables and Secrets
   //     AIRTABLE_TOKEN   type: Secret
   "vars": {
     "AIRTABLE_BASE": "appgdJPjWXPGgfF2E",
-    "AIRTABLE_TABLE": "Waitlist"
+    "AIRTABLE_TABLE": "Waitlist",
+    "AIRTABLE_CONTACT_TABLE": "Messages"
   },
 
   "assets": {
-    // Where Vite puts the built site. Must match "Build output" in the
-    // dashboard.
     "directory": "./dist/",
 
     // React Router owns the URLs, so any path that is not a real file gets
-    // index.html and React figures out what to render. Without this,
-    // loading /about directly would 404.
-    //
-    // Note: do NOT also add a public/_redirects file. That is Cloudflare
-    // Pages syntax and on Workers it fails the deploy with an "infinite
-    // loop detected" error.
+    // index.html. Do NOT also add a public/_redirects file - that is Pages
+    // syntax and it fails the deploy here.
     "not_found_handling": "single-page-application",
 
-    // Lets the Worker serve assets itself if it ever needs to.
     "binding": "ASSETS",
 
-    // IMPORTANT: /api/* goes to the Worker BEFORE the static-asset rules
-    // get a say. Without this line, "single-page-application" would hand
-    // back index.html for /api/waitlist and the form would break in a
-    // genuinely confusing way (a 200 response full of HTML).
+    // /api/* hits the Worker BEFORE the static-asset rules. Without this,
+    // the SPA rule would return index.html for /api/waitlist with a 200
+    // and the forms would break confusingly.
     "run_worker_first": ["/api/*"]
   },
 
-  // Lets you see console.log output and errors in the dashboard under
-  // the Worker's Logs tab. Worth keeping on.
   "observability": {
     "enabled": true
   }
