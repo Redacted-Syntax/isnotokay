@@ -1,11 +1,12 @@
-/* ---------- REDACTED BAR ---------- */
-/* The house style for anything withheld. Solid bar, invisible text. */
+/* ---------- REDACTED: SOLID BAR ---------- */
+/* Classic censor bar. Ink-black in both themes, because a redaction that
+ * politely matches your brand colors is not a redaction. */
 
 .redacted {
   position: relative;
   display: inline;
-  padding: 0.05em 0.3em;
-  background: var(--text);
+  padding: 0.08em 0.35em;
+  background: #0b0b0d;
   border-radius: 2px;
   color: transparent;
   text-decoration: none;
@@ -17,10 +18,60 @@
   color: transparent;
 }
 
-/* Revealable ones get a cursor hint and a faint magenta edge. */
+/* Light mode: a hairline so the bar reads as deliberate on cream, not as a
+ * rendering bug. */
+[data-theme="light"] .redacted {
+  box-shadow: 0 0 0 1px rgba(43, 36, 48, 0.25);
+}
+
+/* ---------- REDACTED: GLITCHED OUT ---------- */
+/* Text is still there and still readable, but coming apart. Chromatic
+ * split plus a rare flicker. */
+
+.redacted--glitch {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  color: var(--text);
+  user-select: text;
+  font-weight: 700;
+  text-shadow: 1px 0 var(--glitch-a), -1px 0 var(--glitch-b);
+  animation: redact-flicker 7s infinite steps(3, end);
+}
+
+[data-theme="light"] .redacted--glitch {
+  box-shadow: none;
+}
+
+.redacted--glitch .redacted__inner {
+  color: inherit;
+}
+
+@keyframes redact-flicker {
+  0%,
+  88%,
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  89% {
+    opacity: 0.55;
+    transform: translate(-1px, 0);
+  }
+  91% {
+    opacity: 1;
+    transform: translate(1px, 0);
+  }
+  93% {
+    opacity: 0.7;
+    transform: translate(0, 1px);
+  }
+}
+
+/* ---------- REDACTED: HOVER TO REVEAL ---------- */
+
 .redacted.is-revealable {
   cursor: help;
-  box-shadow: inset 0 0 0 1px var(--accent);
   transition: background 0.18s var(--ease), color 0.18s var(--ease);
 }
 
@@ -34,6 +85,33 @@
 .redacted.is-revealable:hover .redacted__inner,
 .redacted.is-revealable:focus-within .redacted__inner {
   color: var(--text);
+}
+
+/* ---------- SIGN OFF STAMP ---------- */
+
+.signoff {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.signoff__slashes {
+  color: var(--accent);
+}
+
+.signoff__name {
+  color: var(--text-soft);
+  font-weight: 700;
+}
+
+/* The sign-off inside a terminal block should not get the auto cursor. */
+.sysnote__body .signoff::after {
+  content: none;
 }
 
 /* ---------- SYSTEM NOTE (fake terminal) ---------- */
@@ -54,10 +132,10 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.5rem 0.85rem;
+  padding: 0.5rem 0.9rem;
   background: var(--bg-deep);
   border-bottom: 1px solid var(--surface-edge);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
 }
@@ -74,7 +152,9 @@
 .sysnote__code {
   color: var(--accent);
   font-weight: 700;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
+  background: none;
+  padding: 0;
 }
 
 .sysnote__status {
@@ -83,8 +163,9 @@
 }
 
 .sysnote__body {
-  padding: 1rem 0.85rem;
-  font-size: 0.82rem;
+  padding: 1rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
   line-height: 1.7;
   color: var(--text-soft);
 }
@@ -93,15 +174,14 @@
   margin-top: 0.75rem;
 }
 
-/* A blinking cursor at the end of the last line. */
-.sysnote__body > :last-child::after {
+/* Blinking cursor on the last line, unless it is a sign-off. */
+.sysnote__body > p:last-child:not(.signoff)::after {
   content: "_";
   margin-left: 2px;
   color: var(--accent);
   animation: blink 1.1s step-end infinite;
 }
 
-/* Variants */
 .sysnote--error .sysnote__bar {
   border-bottom-color: var(--accent);
 }
@@ -116,7 +196,6 @@
 }
 
 /* ---------- STATUS TAG ---------- */
-/* Replaces the polite "Concept" pill on cards. */
 
 .tag-status {
   display: inline-flex;
@@ -128,7 +207,8 @@
   border-radius: 4px;
   background: var(--bg-deep);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--text-muted);
@@ -143,7 +223,6 @@
 }
 
 /* ---------- TERMINAL STRIP ---------- */
-/* The one-line status readout. Homepage, under the hero. */
 
 .strip {
   display: flex;
@@ -151,9 +230,10 @@
   justify-content: center;
   gap: 0.5rem 1.25rem;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   color: var(--text-muted);
 }
 
@@ -163,5 +243,5 @@
 
 .strip b {
   color: var(--accent);
-  font-weight: 400;
+  font-weight: 700;
 }

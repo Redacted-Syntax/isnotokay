@@ -1,28 +1,46 @@
 // ---------- REDACTED ----------
 //
-// A blackout bar over text. The house style for anything unfinished,
-// unsaid, or deliberately withheld.
+// The house style for anything unfinished, unsaid, or withheld. Three ways
+// to do it:
 //
-//   <Redacted>the actual launch date</Redacted>
-//   <Redacted reveal>the part she will not admit</Redacted>
+//   <Redacted>the launch date</Redacted>
+//     Solid black bar. Classic. The text is really there in the HTML, so
+//     it is a joke for anyone who opens devtools.
 //
-// With `reveal`, hovering or tapping uncovers it. Without, it stays
-// blacked out forever and the text underneath is a joke only people who
-// open devtools get to read. Both are correct uses.
+//   <Redacted glitch>the launch date</Redacted>
+//     Text stays readable but comes apart - RGB split, occasional flicker.
+//     Use when you want people to actually read it and still feel the
+//     interference.
 //
-// Screen readers are told it is redacted rather than being handed the
-// hidden text, because otherwise the joke breaks and the page reads as
-// nonsense.
+//   <Redacted reveal hint="nice try">the launch date</Redacted>
+//     Blacked out until hovered or focused.
+//
+// Screen readers are told it is redacted rather than handed the hidden
+// text, otherwise the joke breaks and the page reads as nonsense.
 
-export default function Redacted({ children, reveal = false, hint }) {
+export default function Redacted({
+  children,
+  glitch = false,
+  reveal = false,
+  hint,
+}) {
+  const classes = [
+    "redacted",
+    glitch && "redacted--glitch",
+    reveal && "is-revealable",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <span
-      className={`redacted ${reveal ? "is-revealable" : ""}`}
+      className={classes}
       title={reveal ? hint || "go on then" : undefined}
       role="mark"
-      aria-label="redacted"
+      aria-label={glitch ? undefined : "redacted"}
+      data-text={glitch ? String(children) : undefined}
     >
-      <span className="redacted__inner" aria-hidden={!reveal}>
+      <span className="redacted__inner" aria-hidden={!reveal && !glitch}>
         {children}
       </span>
     </span>
