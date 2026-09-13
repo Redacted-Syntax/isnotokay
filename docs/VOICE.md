@@ -1,13 +1,80 @@
 # Voice bank
 
-Every good line from every previous version of this project, in one place,
-so nothing has to be rewritten from memory again.
+Every good line from every version of this project, plus the rules for the
+redaction system. Nothing has to be rewritten from memory again.
 
 Four versions exist: the March 2024 Canva/Joomla beta, the multi-page site
 archived in May 2026, the single-page Netlify rebuild, and the Polsia app.
-The 2024 beta is the rawest and the funniest. The 2026 versions are more
-polished and less alive. The target is the 2024 voice with the 2026
-structure.
+The 2024 beta is the rawest and the funniest. The target is the 2024 voice
+with the 2026 structure.
+
+## THE REDACTION SYSTEM
+
+The founder is called Redacted. So the site redacts things. That is the
+whole visual language and it does two jobs at once: it is funny, and it is
+how unfinished parts get owned instead of apologised for.
+
+### `<Redacted>` - the blackout bar
+
+```jsx
+<Redacted>not your business</Redacted>
+<Redacted reveal hint="nice try">when the report button works</Redacted>
+```
+
+Without `reveal`, it stays blacked out forever and the hidden text is a
+joke for people who open devtools. With `reveal`, hovering uncovers it.
+Both are correct. Use it for:
+
+- things genuinely private (her real name)
+- punchlines (`Estimated ship date: [redacted]`)
+- honest answers that are funnier hidden (`blocked on $425`)
+
+### `<SystemNote>` - the fake terminal block
+
+```jsx
+<SystemNote code="ERR_NO_INVENTORY" status="cart disabled" variant="error">
+  <p>Nothing here is for sale...</p>
+</SystemNote>
+```
+
+This replaced every grey "placeholder, coming soon" box. Variants:
+`error` (broken or missing), `pending` (still building), `classified`
+(deliberately withheld).
+
+The last paragraph gets a blinking cursor automatically, so do not put a
+full stop on it. It reads as a live terminal, mid-thought.
+
+Codes currently in use:
+
+| Page | Code | Status |
+| --- | --- | --- |
+| /rooms | `ERR_ROOM_NOT_FOUND` | 4 of 4 missing |
+| /store | `ERR_NO_INVENTORY` | cart disabled |
+| /join | `AUTH_NOT_IMPLEMENTED` | phase 2 of 4 |
+| /guidelines | `RULES_V0.9` | pre-release |
+| /terms | `DOC_UNSIGNED` | not binding |
+| /privacy | `POLICY_PENDING` | draft |
+| /health-data | `HEALTH_DATA_SCOPE` | currently: none |
+| /onboarding | `SIM_MODE` | dress rehearsal |
+| 404 | `404_NOT_FOUND` | same |
+
+### THE ONE HARD RULE
+
+**Never wrap safety content in this.** No redaction bars over crisis
+numbers, no fake error boxes around the 988 line, no glitch on the phone
+number. Crisis information has to read as plain and true. A joke frame
+around a real emergency resource is the one unfunny thing this site could
+do.
+
+So: the crisis banner, the crisis cards on `/welcome`, and the "clear line"
+panel all stay completely straight. Everything else can play.
+
+## Status tags on cards
+
+Instead of a polite "Concept" pill, cards carry a terminal-style tag with a
+pulsing dot. Rooms use `not deployed`, `in dev hell`, `awaiting cat`,
+`ironic, pending`. Shop items use `unprinted`, `no mold yet`, `undrawn`,
+`unsequenced`. Edit them in `src/data/rooms.js` and `src/pages/Store.jsx`.
 
 ## The thesis lines
 
@@ -21,13 +88,11 @@ structure.
 
 > You are allowed to be a work in progress in public.
 
-> Sometimes, not being okay is perfectly normal.
-
 > We're all in this mess together.
 
 ## The 2024 beta - the good stuff
 
-This was written in one sitting and it shows, in the best way.
+Written in one sitting and it shows, in the best way.
 
 > You found us. Or maybe we found you. Either way... welcome to the mess.
 
@@ -80,14 +145,12 @@ From the existing Typeform:
 
 That "...okay..." as a button label is perfect and should survive.
 
-## Room and feature descriptions worth keeping
+## Room and feature lines worth keeping
 
 > Cat Lovers Welcome - sometimes pets are better company than humans.
 
 > Safe Spaces - moderated forums and groups where vulnerability is
 > protected, not exploited.
-
-> Self-Expression - share your art, writing, videos, or thoughts.
 
 > Merch with Meaning - wear your truth.
 
@@ -97,53 +160,32 @@ That "...okay..." as a button label is perfect and should survive.
 ## Merch names
 
 Emotionally Unavailable Hoodie. Dissociation Tee. BPD Favorite Person Tee.
-Not Okay Pin Set. Anxiety Playlist.
-
-"The Cult Shop" as the store name. "The Cult of Controlled Chaos" as a
-tagline.
+Not Okay Pin Set. Anxiety Playlist. "The Cult Shop" as the store name.
+"The Cult of Controlled Chaos" as a tagline.
 
 ## What the 2024 version did better
 
 1. **Jokes with teeth.** "Your emotional damage will be monetized
-   (eventually)" is funnier and more honest than any of the polished 2026
-   copy.
-2. **Admitted it was unfinished** and made that part of the charm, instead
-   of papering over it with fake statistics.
+   (eventually)" beats any of the polished 2026 copy.
+2. **Admitted it was unfinished** and made that the charm, instead of
+   papering over it with invented statistics.
 3. **Specific, not universal.** "Zillennials with ironic tattoos and
    imposter syndrome" tells you exactly who it is for. "People navigating
-   mental health challenges" could be any wellness brand on earth.
+   mental health challenges" could be any wellness brand alive.
 4. **Sounded like one person**, not a committee.
 
 ## What every version did wrong
 
-Both 2026 versions and the 2024 beta carry invented social proof:
-
-- Testimonials from Jamie T., Morgan P., Taylor M., Jordan P., Riley S.
-- A member profile for "Alex K."
-- "500+ Active Members", "12K+ Monthly Visitors", "5+ Planned Network
-  Sites", "65% dev progress"
-- "CultShop: NOW OPEN" when it was not open
+All four carried invented social proof: testimonials from Jamie T., Morgan
+P., Taylor M., Jordan P., Riley S., a member profile for "Alex K.", plus
+"500+ Active Members", "12K+ Monthly Visitors", "5+ Planned Network Sites",
+"65% dev progress", and "CultShop: NOW OPEN" when it was not open.
 
 None of it goes in the rebuild. The FTC Consumer Reviews and Testimonials
 Rule covers testimonials attributed to people who do not exist, and more to
-the point: a brand whose whole premise is refusing the highlight reel cannot
-run a fake one.
+the point: a brand whose whole premise is refusing the highlight reel
+cannot run a fake one.
 
-The honest version of social proof is what the 2024 beta already did by
-accident - say it is unfinished, be funny about it, and let that be the
-draw.
-
-## Founder identity - a real decision to make
-
-The 2026 archived site says the founder "prefers to remain anonymous for
-privacy reasons" and then discloses her diagnosis in the same paragraph.
-Both choices are legitimate; together they are in tension, and the site
-should pick one deliberately:
-
-- **Pseudonymous founder.** A handle, no legal name, diagnosis disclosed if
-  wanted. Safer, and the anonymity is consistent.
-- **Named founder.** Full credit, better for portfolio and press, but the
-  name is then permanently attached to a mental health disclosure on the
-  open web.
-
-Worth deciding before the site is public, because it is hard to undo.
+The honest version of social proof is what the 2024 beta did by accident -
+say it is unfinished, be funny about it, let that be the draw. That is now
+the entire redaction system.

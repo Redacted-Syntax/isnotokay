@@ -1,54 +1,47 @@
 import { Link } from "react-router-dom";
+import SystemNote from "../components/SystemNote.jsx";
 
 // ---------- ONBOARDING CONSENT GATE ----------
 //
-// This is the POST-SIGNUP page. It sits between creating an account and
-// entering the community, and it is not the same thing as /welcome.
+// This is the POST-SIGNUP page, not the same thing as /welcome.
 //
 //   /welcome     public. No account. Crisis resources for anyone.
-//   /onboarding  requires an account. Blocks the feed until consent is given.
+//   /onboarding  requires an account. Blocks the feed until consent given.
 //
-// Structure ported from the Polsia build, which got this right.
-//
-// PHASE 3 IMPLEMENTATION NOTES (December/January):
-//
-// 1. This route must be wrapped in <ProtectedRoute>. Logged out users get
-//    bounced to /login, not here.
-//
-// 2. The two required checkboxes gate the submit button. Nobody enters the
-//    feed without ticking them.
-//
-// 3. Store the result on the profile, with a timestamp:
-//
-//      alter table profiles
-//        add column consented_at timestamptz,
-//        add column allow_dms boolean default false,
-//        add column profile_visible boolean default true;
-//
-//    That timestamp is the point of the whole page. It is the record that
-//    this person was told peer support is not professional care BEFORE they
-//    posted anything. Keep it forever, even if they later delete posts.
-//
-// 4. After saving, redirect to the feed. On every later visit, if
-//    consented_at is already set, skip this page.
-//
-// 5. The privacy answers are defaults, not locks. Both must be changeable in
-//    settings, and the page should say so.
-//
-// 6. Note the asymmetric defaults below: DMs default to OFF, profile
-//    defaults to visible. Someone rushing through the form should end up
-//    with the safer option on the choice that can actually hurt them.
+// PHASE 3 NOTES (December/January):
+//   1. Wrap this route in <ProtectedRoute>.
+//   2. Both required checkboxes gate the submit button.
+//   3. Store the result with a timestamp:
+//        alter table profiles
+//          add column consented_at timestamptz,
+//          add column allow_dms boolean default false,
+//          add column profile_visible boolean default true;
+//      That timestamp is the point of the page. It records that this person
+//      was told peer support is not professional care BEFORE they posted.
+//      Keep it forever.
+//   4. After saving, redirect to the feed. Skip this page if consented_at
+//      is already set.
+//   5. Both privacy choices must stay editable in settings.
+//   6. Note the asymmetric defaults: DMs OFF, profile visible. Someone
+//      rushing the form should land on the safer option for the choice that
+//      can actually hurt them.
 
 export default function Onboarding() {
   return (
     <>
       <section className="section">
-        <div className="wrap">
+        <div className="wrap center">
           <span className="label" style={{ marginBottom: "1.5rem" }}>
             Before you enter the circle
           </span>
 
-          <div style={{ marginBottom: "2rem" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "2rem",
+            }}
+          >
             <div className="line-expand" />
           </div>
 
@@ -59,12 +52,21 @@ export default function Onboarding() {
             understand what this space can offer, what it cannot, and how to
             protect your privacy here.
           </p>
+        </div>
+      </section>
 
-          <p className="callout" style={{ marginTop: "2rem" }}>
-            Preview. There are no accounts yet, so nothing here saves. This is
-            the page you will see right after signing up, once there is
-            something to sign up to.
-          </p>
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <SystemNote code="SIM_MODE" status="dress rehearsal" variant="classified">
+            <p>
+              Nothing on this page saves. There are no accounts to attach it
+              to. Every box is inert and every radio is decorative.
+            </p>
+            <p>
+              It is public early on purpose, so you can read the terms of
+              entry long before anyone asks you to accept them
+            </p>
+          </SystemNote>
         </div>
       </section>
 
@@ -84,13 +86,13 @@ export default function Onboarding() {
               help.
             </p>
             <p>
-              Posts and messages are not monitored for emergencies. Crisis links
-              are offered as starting points only; they do not promise
+              Posts and messages are not monitored for emergencies. Crisis
+              links are offered as starting points only; they do not promise
               monitoring, a reply, or intervention.
             </p>
             <p className="clearline__urgent">
-              If you may be in immediate danger, contact local emergency services
-              or a crisis service now.
+              If you may be in immediate danger, contact local emergency
+              services or a crisis service now.
             </p>
 
             <ul className="clearline__notes">
@@ -109,7 +111,9 @@ export default function Onboarding() {
             {/* ---------- 01 ---------- */}
             <article className="step">
               <span className="step__num">01 - Know the boundary</span>
-              <h2 className="mono-display step__title">What this space is for</h2>
+              <h2 className="mono-display step__title">
+                What this space is for
+              </h2>
               <p className="step__body">
                 The circle is for connection between peers. Not diagnosis, not
                 treatment, not rescue.
@@ -129,8 +133,8 @@ export default function Onboarding() {
               <span className="step__num">02 - Keep the circle kind</span>
               <h2 className="mono-display step__title">Community guidelines</h2>
               <p className="step__body">
-                A few practices help this remain a safer place for people in many
-                different moments.
+                A few practices help this remain a safer place for people in
+                many different moments.
               </p>
 
               <ul className="step__rules">
@@ -139,8 +143,8 @@ export default function Onboarding() {
                   another member.
                 </li>
                 <li>
-                  Speak from your own experience. Do not diagnose, prescribe, or
-                  promise an outcome.
+                  Speak from your own experience. Do not diagnose, prescribe,
+                  or promise an outcome.
                 </li>
                 <li>
                   Respect a pause or a no. Report content that feels unsafe
@@ -157,7 +161,7 @@ export default function Onboarding() {
 
               <p className="step__more">
                 The full version lives in the{" "}
-                <Link to="/guidelines">community guidelines</Link>.
+                <Link to="/guidelines">house rules</Link>.
               </p>
             </article>
 
@@ -168,15 +172,16 @@ export default function Onboarding() {
                 You decide how reachable to be
               </h2>
               <p className="step__body">
-                Posts in the circle are visible to members. Avoid names, contact
-                details, exact locations, or anything identifying when you share.
+                Posts in the circle are visible to members. Avoid names,
+                contact details, exact locations, or anything identifying when
+                you share.
               </p>
 
               <label className="consent">
                 <input type="checkbox" disabled />
                 <span>
-                  I understand that community posts are member-visible and I will
-                  avoid sharing identifying details.
+                  I understand that community posts are member-visible and I
+                  will avoid sharing identifying details.
                 </span>
               </label>
 
@@ -185,15 +190,15 @@ export default function Onboarding() {
                 <label className="choice__opt">
                   <input type="radio" name="dm" disabled defaultChecked />
                   <span>
-                    No, keep message requests off. I can still participate in the
-                    circle.
+                    No, keep message requests off. I can still participate in
+                    the circle.
                   </span>
                 </label>
                 <label className="choice__opt">
                   <input type="radio" name="dm" disabled />
                   <span>
-                    Yes, allow members to send me a message request. I can change
-                    this later.
+                    Yes, allow members to send me a message request. I can
+                    change this later.
                   </span>
                 </label>
               </fieldset>
@@ -214,8 +219,8 @@ export default function Onboarding() {
             <div className="gate">
               <p className="gate__note">
                 You can change either privacy choice later in privacy settings.
-                Your safety boundaries stay visible whenever you need to revisit
-                them.
+                Your safety boundaries stay visible whenever you need to
+                revisit them.
               </p>
               <button className="btn" type="button" disabled>
                 I understand - enter the circle
