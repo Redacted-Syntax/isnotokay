@@ -88,7 +88,6 @@ a {
 }
 
 .lede {
-  font-family: var(--font-mono);
   font-size: clamp(1rem, 2vw, 1.15rem);
   line-height: 1.7;
   color: var(--text-soft);
@@ -138,13 +137,13 @@ a {
 .card {
   background: var(--surface);
   border: var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: 1.5rem;
   transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
 .card:hover {
-  border-color: var(--accent-soft);
+  border-color: var(--accent);
   transform: translateY(-3px);
 }
 
@@ -177,18 +176,20 @@ a {
   padding: 0.85rem 1.6rem;
   border: 2px solid var(--accent);
   border-radius: var(--radius-pill);
-  background: var(--accent);
-  color: var(--bg);
+  background: var(--grad-hot);
+  border-color: transparent;
+  color: #fff;
   font-family: var(--font-display);
   font-weight: 700;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+  transition: transform 0.25s var(--ease), filter 0.25s var(--ease);
 }
 
 .btn:hover {
   transform: scale(1.04);
+  filter: brightness(1.1);
 }
 
 .btn:active {
@@ -197,6 +198,7 @@ a {
 
 .btn--ghost {
   background: transparent;
+  border-color: var(--accent);
   color: var(--accent);
 }
 
@@ -205,9 +207,13 @@ a {
 }
 
 .btn--quiet {
-  border-color: var(--surface-edge);
   background: transparent;
+  border-color: var(--surface-edge);
   color: var(--text);
+}
+
+.btn--quiet:hover {
+  border-color: var(--accent);
 }
 
 /* ---------- NAV ---------- */
@@ -216,7 +222,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(10, 10, 15, 0.85);
+  background: rgba(11, 11, 20, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: var(--border);
 }
@@ -226,16 +232,23 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: 4rem;
+  min-height: 4.25rem;
+  flex-wrap: wrap;
+  padding-block: 0.5rem;
 }
 
 .nav__brand {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
+}
+
+.nav__wordmark {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .nav__links {
@@ -249,8 +262,6 @@ a {
 .nav__links a {
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
   color: var(--text-soft);
   text-decoration: none;
   transition: color 0.2s var(--ease);
@@ -349,8 +360,8 @@ a {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  width: 500px;
-  height: 500px;
+  width: 560px;
+  height: 560px;
   border-radius: 50%;
   background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
   pointer-events: none;
@@ -368,6 +379,7 @@ a {
   border-left: 2px solid var(--accent);
   padding: 0.25rem 0 0.25rem 1.25rem;
   font-family: var(--font-mono);
+  font-size: 0.9rem;
   color: var(--text-soft);
 }
 
@@ -432,7 +444,7 @@ a {
   z-index: 50;
   padding: 0.5rem 1rem;
   background: var(--accent);
-  color: var(--bg);
+  color: #fff;
   border-radius: var(--radius);
 }
 
