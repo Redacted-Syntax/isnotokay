@@ -1,10 +1,9 @@
 /* ---------- CENTERED LAYOUT ---------- */
 /*
- * Pages are centered. Two different things are going on and it is worth
- * knowing the difference:
+ * Pages are centered. Two different things are going on:
  *
  *   1. The COLUMN is centered on the page. Always. That is `margin-inline:
- *      auto` on a thing with a max-width.
+ *      auto` on something with a max-width.
  *
  *   2. The TEXT is center-aligned. Only for short things: headings, ledes,
  *      button rows, labels.
@@ -14,7 +13,6 @@
  * eye has to hunt for it. Fine for one sentence, rough for six.
  */
 
-/* Headings and short text get centered. Applied by PageHeader. */
 .center {
   text-align: center;
 }
@@ -34,7 +32,6 @@
   margin-inline: auto;
 }
 
-/* For prose that should have a centered heading over left-aligned body. */
 .prose--center > h2 {
   text-align: center;
 }
@@ -59,10 +56,25 @@
   margin-inline: auto;
 }
 
-/* Forms centered on the page, labels and inputs still left-aligned inside. */
-.form--center {
+/* ---------- FORMS: CENTERED ---------- */
+/* The form box is centered on the page. Labels and inputs inside stay
+ * left-aligned, because a left edge is what makes a form scannable. */
+
+.form {
   margin-inline: auto;
   text-align: left;
+}
+
+/* The submit button gets centered inside the centered form. */
+.form .btn {
+  align-self: center;
+  min-width: 12rem;
+}
+
+/* Help text under the form reads better centered - it is one short note,
+ * not a paragraph. */
+.form__fine {
+  text-align: center;
 }
 
 /* A callout centered as a block, with centered text. Short notices only. */
@@ -74,14 +86,6 @@
   border-top: 2px solid var(--accent);
   padding: 1rem 0 0;
   text-align: center;
-}
-
-/* Textarea needs a little help since it inherits the input styles. */
-.form__textarea {
-  resize: vertical;
-  min-height: 8rem;
-  font-family: var(--font-mono);
-  line-height: 1.6;
 }
 
 /* ---------- FOOTER SUPPORT CALL-OUT ---------- */
@@ -100,17 +104,15 @@
 
 .footer__support p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--text-soft);
 }
 
 .footer__support-btn {
   padding: 0.6rem 1.2rem;
-  font-family: var(--font-display);
   font-size: 0.85rem;
 }
 
-/* Footer columns read better centered on narrow screens, left on wide. */
 .footer__cols {
   text-align: center;
 }

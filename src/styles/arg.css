@@ -1,0 +1,103 @@
+/* ---------- ARG LAYER ---------- */
+/*
+ * Hidden things. All optional, all flavour, none of it load-bearing.
+ *
+ * THE RULE: nothing a person needs is ever hidden behind any of this. No
+ * crisis resource, no safety notice, no way to contact a human. See
+ * docs/ARG.md.
+ */
+
+/* ---------- WHISPER ---------- */
+/* Invisible until highlighted. Genuinely in the page, genuinely
+ * selectable. */
+
+.whisper {
+  color: transparent;
+  user-select: text;
+  cursor: text;
+}
+
+.whisper::selection {
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+.whisper::-moz-selection {
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+/* ---------- BREADCRUMB ---------- */
+/* A character that does not look like a link until you hover it. Used for
+ * the footer's [REDACTED] stamp. */
+
+.breadcrumb {
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
+  transition: color 0.4s var(--ease);
+}
+
+.breadcrumb:hover,
+.breadcrumb:focus-visible {
+  color: var(--accent);
+  cursor: help;
+}
+
+/* ---------- ARCHIVE / RECOVERED FRAGMENT ---------- */
+/* For the /archive page. Reads like something pulled off a dead server. */
+
+.fragment {
+  border: 1px dashed var(--surface-edge);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  background: var(--bg-deep);
+  text-align: left;
+}
+
+.fragment + .fragment {
+  margin-top: 1rem;
+}
+
+.fragment__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+
+.fragment__domain {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.fragment__quote {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+  border-left: 2px solid var(--accent-soft);
+  padding-left: 0.9rem;
+}
+
+.fragment--lost .fragment__domain {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+/* ---------- DEAD LINK ---------- */
+/* Looks like a link, goes nowhere, says so on hover. */
+
+.deadlink {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  cursor: not-allowed;
+}

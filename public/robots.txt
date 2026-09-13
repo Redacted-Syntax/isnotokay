@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# ------------------------------------------------------------
+# you are almost certainly not a crawler.
+#
+# nothing down here is load-bearing. no puzzle is required to
+# use this website, get help, or talk to a person. if you are
+# having a bad night, close this file and go read /welcome.
+#
+# still here?
+#
+# there were other sites before this one. four of them.
+# three are gone and one is this.
+#
+# /archive
+#
+# - [REDACTED]
+# ------------------------------------------------------------
